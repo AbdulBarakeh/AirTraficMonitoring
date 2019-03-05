@@ -7,6 +7,8 @@ using Serilog;
 
 namespace AirTraficMonitoring.Test.Unit.Logger
 {
+    [Author("MSK")]
+
     [TestFixture]
     public class ConsoleLogInformation
     {
