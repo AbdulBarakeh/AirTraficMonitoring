@@ -1,0 +1,5 @@
+2019-03-05 17:06:29.742 +01:00 [Error] Hello World!
+2019-03-05 17:07:12.703 +01:00 [Error] Hello World!
+2019-03-05 23:41:32.843 +01:00 [Information] Running Application
+a
+
