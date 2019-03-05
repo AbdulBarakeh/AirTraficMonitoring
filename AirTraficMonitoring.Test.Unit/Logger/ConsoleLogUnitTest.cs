@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirTraficMonitoring.Application
+namespace AirTraficMonitoring.Test.Unit.Logger
 {
-    public class Class1
+    public class ConsoleLogUnitTest
     {
+
     }
 }
