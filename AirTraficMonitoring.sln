@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTraficMonitoring", "AirTraficMonitoring\AirTraficMonitoring.csproj", "{82729311-C4C4-484D-9964-3A35E0FE3C77}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTraficMonitoring.Application", "AirTraficMonitoring.Application\AirTraficMonitoring.Application.csproj", "{C3E4D25A-5CC7-47AF-B261-1C5EAA4DB004}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTraficMonitoring.Test.Unit", "AirTraficMonitoring.Test.Unit\AirTraficMonitoring.Test.Unit.csproj", "{884025F7-1584-4180-8DDE-70A9AF94174A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTraficMonitoring2.Test.Unit", "AirTraficMonitoring2.Test.Unit\AirTraficMonitoring2.Test.Unit.csproj", "{AAE6DA40-6DF8-41ED-A724-DAC2F2DF4029}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{884025F7-1584-4180-8DDE-70A9AF94174A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{884025F7-1584-4180-8DDE-70A9AF94174A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{884025F7-1584-4180-8DDE-70A9AF94174A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE6DA40-6DF8-41ED-A724-DAC2F2DF4029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE6DA40-6DF8-41ED-A724-DAC2F2DF4029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE6DA40-6DF8-41ED-A724-DAC2F2DF4029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE6DA40-6DF8-41ED-A724-DAC2F2DF4029}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
