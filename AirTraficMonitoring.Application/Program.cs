@@ -1,4 +1,6 @@
-﻿using AirTraficMonitoring.Logger;
+﻿using System;
+using System.Configuration;
+using AirTraficMonitoring.Logger;
 
 namespace AirTraficMonitoring.Application
 {
@@ -8,7 +10,7 @@ namespace AirTraficMonitoring.Application
         {
             ILog file = new FileLog();
 
-            file.LogInformation("");
+            file.LogInformation("Running Application");
         }
     }
 }

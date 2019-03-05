@@ -7,15 +7,16 @@ using Serilog;
 
 namespace AirTraficMonitoring.Test.Unit.Logger
 {
-    public class FileLogInformation
+    [TestFixture]
+    public class ConsoleLogInformation
     {
-        private FileLog _uut;
+        private ConsoleLog _uut;
         private ILogger _logger;
 
         [SetUp]
         public void Setup()
         {
-            _uut = new FileLog {_log = Substitute.For<ILogger>()};
+            _uut = new ConsoleLog { _log = Substitute.For<ILogger>() };
             _logger = _uut._log;
         }
 
@@ -23,8 +24,9 @@ namespace AirTraficMonitoring.Test.Unit.Logger
         public void LogInformation_ArgumentIsNull_ThrowsException()
         {
             string argument = null;
-            
-            Assert.That(() => _uut.LogInformation(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>());
+
+            Assert.That(() => _uut.LogInformation(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
+                .With.Message.EqualTo("Argument string is not valid!"));
         }
 
         [Test]
@@ -32,7 +34,8 @@ namespace AirTraficMonitoring.Test.Unit.Logger
         {
             string argument = String.Empty;
 
-            Assert.That(() => _uut.LogInformation(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>());
+            Assert.That(() => _uut.LogInformation(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
+                .With.Message.EqualTo("Argument string is not valid!"));
         }
 
         [Test]
@@ -40,7 +43,8 @@ namespace AirTraficMonitoring.Test.Unit.Logger
         {
             string argument = "   ";
 
-            Assert.That(() => _uut.LogInformation(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>());
+            Assert.That(() => _uut.LogInformation(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
+                .With.Message.EqualTo("Argument string is not valid!"));
         }
 
         [Test]

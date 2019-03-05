@@ -69,8 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logger\ConsoleLogUnitTest.cs" />
+    <Compile Include="Logger\ConsoleLogError.cs" />
+    <Compile Include="Logger\ConsoleLogInformation.cs" />
+    <Compile Include="Logger\ConsoleLogWarning.cs" />
+    <Compile Include="Logger\FileLogError.cs" />
     <Compile Include="Logger\FileLogInformation.cs" />
+    <Compile Include="Logger\FileLogWarning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

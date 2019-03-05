@@ -17,10 +17,5 @@ namespace AirTraficMonitoring.Logger.Exceptions
         {
             
         }
-
-        public LoggerArgumentIsNullOrWhiteSpaceException(string message, Exception inner) : base(message, inner)
-        {
-                
-        }
     }
 }
