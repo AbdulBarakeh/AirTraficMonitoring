@@ -8,9 +8,9 @@ namespace AirTraficMonitoring.Application
     {
         static void Main(string[] args)
         {
-            ILog file = new FileLog();
+            ILog file = new ConsoleLog();
 
-            file.LogInformation("Running Application");
+            file.LogInformation(ConfigurationManager.AppSettings["LoggerExceptionMessage"]);
         }
     }
 }
