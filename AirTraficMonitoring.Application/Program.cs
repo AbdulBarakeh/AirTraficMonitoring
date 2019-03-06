@@ -11,6 +11,8 @@ namespace AirTraficMonitoring.Application
             ILog file = new ConsoleLog();
 
             file.LogInformation("");
+
+            
         }
     }
 }
