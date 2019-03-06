@@ -28,7 +28,7 @@ namespace AirTraficMonitoring.Test.Unit.Logger
             string argument = null;
 
             Assert.That(() => _uut.LogWarning(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
-                .With.Message.EqualTo("Argument string is not valid!"));
+                .With.Message.EqualTo(LoggerExceptionMessage.ArgumentNotValid));
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace AirTraficMonitoring.Test.Unit.Logger
             string argument = String.Empty;
 
             Assert.That(() => _uut.LogWarning(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
-                .With.Message.EqualTo("Argument string is not valid!"));
+                .With.Message.EqualTo(LoggerExceptionMessage.ArgumentNotValid));
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace AirTraficMonitoring.Test.Unit.Logger
             string argument = "   ";
 
             Assert.That(() => _uut.LogWarning(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
-                .With.Message.EqualTo("Argument string is not valid!"));
+                .With.Message.EqualTo(LoggerExceptionMessage.ArgumentNotValid));
         }
 
         [Test]

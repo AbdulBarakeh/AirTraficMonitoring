@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logger\Exceptions\LoggerArgumentIsNullOrWhiteSpaceException.cs" />
+    <Compile Include="Logger\Exceptions\LoggerExceptionMessage.cs" />
     <Compile Include="Logger\ILog.cs" />
     <Compile Include="Logger\ConsoleLog.cs" />
     <Compile Include="Logger\FileLog.cs" />

@@ -19,7 +19,7 @@ namespace AirTraficMonitoring.Logger
         {
             if (String.IsNullOrWhiteSpace(info))
             {
-                throw new LoggerArgumentIsNullOrWhiteSpaceException("Argument string is not valid!");
+                throw new LoggerArgumentIsNullOrWhiteSpaceException(LoggerExceptionMessage.ArgumentNotValid);
             }
             _log.Information(info);
         }
@@ -28,7 +28,7 @@ namespace AirTraficMonitoring.Logger
         {
             if (String.IsNullOrWhiteSpace(warning))
             {
-                throw new LoggerArgumentIsNullOrWhiteSpaceException("Argument string is not valid!");
+                throw new LoggerArgumentIsNullOrWhiteSpaceException(LoggerExceptionMessage.ArgumentNotValid);
             }
             _log.Warning(warning);
         }
@@ -37,7 +37,7 @@ namespace AirTraficMonitoring.Logger
         {
             if (String.IsNullOrWhiteSpace(error))
             {
-                throw new LoggerArgumentIsNullOrWhiteSpaceException("Argument string is not valid!");
+                throw new LoggerArgumentIsNullOrWhiteSpaceException(LoggerExceptionMessage.ArgumentNotValid);
             }
             _log.Error(error);
         }

@@ -10,7 +10,7 @@ namespace AirTraficMonitoring.Application
         {
             ILog file = new ConsoleLog();
 
-            file.LogInformation(ConfigurationManager.AppSettings["LoggerExceptionMessage"]);
+            file.LogInformation("");
         }
     }
 }
