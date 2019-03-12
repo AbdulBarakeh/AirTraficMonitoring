@@ -8,6 +8,8 @@
             XPosition = xpos;
             YPosition = ypos;
             Altitude = alt;
+            Velocity = 0;
+            CompassCourse = 0;
         }
 
         public string Tag { get; set; }
