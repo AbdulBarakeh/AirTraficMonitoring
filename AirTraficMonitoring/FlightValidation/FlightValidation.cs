@@ -4,20 +4,27 @@ using System.Linq;
 using System.Runtime.Remoting.Services;
 using System.Text;
 using System.Threading.Tasks;
+using AirTraficMonitoring.FlightAirspace;
+using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring
 {
-    public class FlightValidation : Airspace
+    namespace AirTraficMonitoring
     {
-        public bool validation()
+        public class FlightValidation : IAirspace
         {
-            if (tesTrack.x <= Airspace.x && tesTrack.y <= Airspace.y)
+            public bool validation()
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                if (ITrack.XPosition <= IAirspace.Width && ITrack.YPosition <= IAirspace.Height &&
+                    ITrack.Altitude <= IAirspace.maxAlt && ITrack.Altitude => IAirspace.minAlt)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
         }
     }
