@@ -7,19 +7,37 @@ using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.FlightAirspace
 {
-    class Airspace : ITrack
+    class Airspace : ITrack 
     {
-        List<FlightTrack> ListOfFlights;
-        Airspace()
+        List<FlightTrack> ListOfFlights = new List<FlightTrack>();
+
+        Airspace(FlightTrack flight)
         {
+            //Iterate through list of flights 
 
-        }// Tager track objekt og tjekker liste efter tidligerer fly;
+            var results = ListOfFlights.FindAll(a => a.Tag == flight.Tag);
 
-        string ITrack.Tag { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ITrack.XPosition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ITrack.YPosition { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ITrack.Altitude { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ITrack.Velocity { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ITrack.CompassCourse { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+            if (results.Count < 0)
+            {
+                throw new System.ArgumentException("Parameter can't be less than 0", "results");
+            }
+            else if (results.Count == 0)
+            {
+                ListOfFlights.Add(flight);
+            }
+            else
+            {
+                //Udregn fart 
+                // Opdaterer koordinater
+            }
+
+        }
+
+        public string Tag { get; set; }
+        public double XPosition { get; set; }
+        public double YPosition { get; set; }
+        public double Altitude { get; set; }
+        public double Velocity { get; set; }
+        public double CompassCourse { get; set; }
     }
 }

@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlightAirspace\Airspace.cs" />
+    <Compile Include="FlightAirspace\IAirspace.cs" />
     <Compile Include="Logger\Exceptions\LoggerArgumentIsNullOrWhiteSpaceException.cs" />
     <Compile Include="Logger\Exceptions\LoggerExceptionMessage.cs" />
     <Compile Include="Logger\ILog.cs" />
