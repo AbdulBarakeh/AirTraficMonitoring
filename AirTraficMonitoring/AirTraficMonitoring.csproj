@@ -59,6 +59,8 @@
     <Compile Include="Logger\ConsoleLog.cs" />
     <Compile Include="Logger\FileLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Track\FlightTrack.cs" />
+    <Compile Include="Track\ITrack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
