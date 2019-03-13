@@ -58,6 +58,8 @@
     <Compile Include="Logger\ILog.cs" />
     <Compile Include="Logger\ConsoleLog.cs" />
     <Compile Include="Logger\FileLog.cs" />
+    <Compile Include="Monitor\ConsoleMonitor.cs" />
+    <Compile Include="Monitor\IMonitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Track\FlightTrack.cs" />
     <Compile Include="Track\ITrack.cs" />
