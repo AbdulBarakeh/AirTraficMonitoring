@@ -12,6 +12,5 @@ namespace AirTraficMonitoring.FlightAirspace
         double Height { get; set; }
         double MinAlt { get; set; }
         double MaxAlt { get; set; }
-
     }
 }
