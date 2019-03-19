@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AirTraficMonitoring.Separation;
 using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.FlightAirspace
@@ -10,6 +13,7 @@ namespace AirTraficMonitoring.FlightAirspace
     public class Airspace  : IAirspace
     {
         List<ITrack> ListOfFlights = new List<ITrack>();
+        List<ISeparation> obsList = new List<ISeparation>();
 
         public Airspace(double width, double height, double minAlt, double maxAlt)
         {
@@ -18,6 +22,11 @@ namespace AirTraficMonitoring.FlightAirspace
             Height = height;
             MinAlt = minAlt;
             MaxAlt = maxAlt;
+        }
+
+        public void attachment(ISeparation separation)
+        {
+            obsList.Add(separation);
         }
 
         public void Add( ITrack track)
@@ -29,11 +38,23 @@ namespace AirTraficMonitoring.FlightAirspace
             {
                 Console.WriteLine($"{flight.Tag}\n");
             });
+
+            Notify(track);
         }
+
+        void Notify()
+        {
+            foreach (var obs in obsList)
+            {
+                obs.Update();
+            }
+        }
+
         public double Width { get; set; }
         public double Height { get; set; }
         public double MinAlt { get; set; }
         public double MaxAlt { get; set; }
+        public Action<object, EventArgs> newTrackEventHandled { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
 
