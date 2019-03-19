@@ -23,6 +23,12 @@ namespace AirTraficMonitoring.FlightAirspace
         public void Add( ITrack track)
         {
             ListOfFlights.Add(track);
+
+
+            ListOfFlights.ForEach(flight =>
+            {
+                Console.WriteLine($"{flight.Tag}\n");
+            });
         }
         public double Width { get; set; }
         public double Height { get; set; }
