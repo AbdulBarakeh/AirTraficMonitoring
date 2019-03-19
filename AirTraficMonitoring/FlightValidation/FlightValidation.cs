@@ -31,12 +31,12 @@ namespace AirTraficMonitoring
             //}
             public bool Validation(IAirspace airspace, ITrack track)
             {
-                if (airspace.Width > track.XPosition)
+                if (airspace.Width >= track.XPosition)
                 {
                     return false;
                 }
 
-                if (airspace.Height > track.YPosition)
+                if (airspace.Height >= track.YPosition)
                 {
                     return false;
                 }
