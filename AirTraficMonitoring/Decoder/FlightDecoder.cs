@@ -22,7 +22,7 @@ namespace AirTraficMonitoring.Decoder
             {
                 var Seperated = data.Split(';');
 
-                _airspace.add = new FlightTrack(Seperated[0], Convert.ToDouble(Seperated[1]), Convert.ToDouble(Seperated[2]), Convert.ToDouble(Seperated[3]), Seperated[4]);
+                _airspace.Add = new FlightTrack(Seperated[0], Convert.ToDouble(Seperated[1]), Convert.ToDouble(Seperated[2]), Convert.ToDouble(Seperated[3]), Seperated[4]);
             } 
         }
     }
