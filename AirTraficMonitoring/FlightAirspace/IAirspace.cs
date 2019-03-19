@@ -7,8 +7,10 @@ using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.FlightAirspace
 {
+
+
    public interface IAirspace
-   {
+    {
         void Add(ITrack track);
         double Width { get; set; }
         double Height { get; set; }
