@@ -7,7 +7,7 @@ using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.FlightAirspace
 {
-    class Airspace  : IAirspace
+    public class Airspace  : IAirspace
     {
         List<ITrack> ListOfFlights = new List<ITrack>();
 
