@@ -1,4 +1,5 @@
-﻿using AirTraficMonitoring.Track;
+﻿
+ using AirTraficMonitoring.Track;
 using System;
 using TransponderReceiver;
 
@@ -8,6 +9,12 @@ namespace AirTraficMonitoring.Decoder
     {
         public static ITransponderReceiver receiver;
         private Track.FlightTrack newTrack;
+        private IAirspace airspace;
+
+        FlightDecoder()
+        {
+
+        }
         public void DecoderEventHandler(object sender, RawTransponderDataEventArgs e)
         {
             foreach (var data in e.TransponderData)
@@ -15,10 +22,7 @@ namespace AirTraficMonitoring.Decoder
                 var Seperated = data.Split(';');
 
                 newTrack = new FlightTrack(Seperated[0], Convert.ToDouble(Seperated[1]), Convert.ToDouble(Seperated[2]), Convert.ToDouble(Seperated[3]), Seperated[4]);
-            }
-            
+            } 
         }
-
-
     }
 }
