@@ -39,7 +39,7 @@ namespace AirTraficMonitoring.Monitor
 
         public void ShowSeparationCondition(List<ITrack> tracks)
         {
-            if (tracks.Count == 0) return;
+            if (tracks.Count != 2) return;
 
             try
             {
