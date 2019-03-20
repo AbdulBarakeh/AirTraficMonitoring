@@ -75,6 +75,7 @@
     <Compile Include="Logger\FileLogError.cs" />
     <Compile Include="Logger\FileLogInformation.cs" />
     <Compile Include="Logger\FileLogWarning.cs" />
+    <Compile Include="Monitor\ConsoleMonitoring.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
