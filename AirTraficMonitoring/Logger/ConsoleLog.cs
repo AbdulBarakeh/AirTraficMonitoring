@@ -6,40 +6,31 @@ namespace AirTraficMonitoring.Logger
 {
     public class ConsoleLog : ILog
     {
-        public ILogger _log { get; set; }
-
-        public ConsoleLog()
-        {
-            _log = new LoggerConfiguration()
-                .WriteTo.Console()
-                .CreateLogger();
-        }
-
         public void LogInformation(string info)
         {
-            if (String.IsNullOrWhiteSpace(info))
+            if (string.IsNullOrWhiteSpace(info))
             {
                 throw new LoggerArgumentIsNullOrWhiteSpaceException(LoggerExceptionMessage.ArgumentNotValid);
             }
-            _log.Information(info);
+            Console.WriteLine(info);
         }
 
         public void LogWarning(string warning)
         {
-            if (String.IsNullOrWhiteSpace(warning))
+            if (string.IsNullOrWhiteSpace(warning))
             {
                 throw new LoggerArgumentIsNullOrWhiteSpaceException(LoggerExceptionMessage.ArgumentNotValid);
             }
-            _log.Warning(warning);
+            Console.WriteLine(warning);
         }
 
         public void LogError(string error)
         {
-            if (String.IsNullOrWhiteSpace(error))
+            if (string.IsNullOrWhiteSpace(error))
             {
                 throw new LoggerArgumentIsNullOrWhiteSpaceException(LoggerExceptionMessage.ArgumentNotValid);
             }
-            _log.Error(error);
+            Console.WriteLine(error);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace AirTraficMonitoring.Test.Unit.Logger
         {
             string argument = null;
 
+
             Assert.That(() => _uut.LogWarning(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>());
         }
 
