@@ -56,7 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FlightValidation\FlightValidation.cs" />
+    <Compile Include="Validator\FlightValidator.cs" />
     <Compile Include="Decoder\FlightDecoder.cs" />
     <Compile Include="Decoder\IDecoder.cs" />
     <Compile Include="FlightAirspace\Airspace.cs" />
