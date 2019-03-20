@@ -8,6 +8,8 @@ using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.FlightAirspace
 {
+
+
    public interface IAirspace
    {
        void attachment(ISeparation separation);
