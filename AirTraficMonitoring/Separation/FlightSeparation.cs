@@ -9,7 +9,7 @@ namespace AirTraficMonitoring.Separation
     public class FlightSeparation : ISeparation
     {
         private Airspace _airspace;
-        List<ITrack> sepatationList = new List<ITrack>();
+        //List<ITrack> sepatationList = new List<ITrack>();
         public FlightSeparation(Airspace airspace)
         {
             _airspace = airspace;
@@ -20,12 +20,11 @@ namespace AirTraficMonitoring.Separation
         {
             Console.WriteLine("test");
 
-            sepatationList.Add(track);
-
-            //foreach (var newTrack in IAirspace.sepatationList)
-            //{
-            //    if ()
-            //}
+            
+            foreach (var newTrack in _airspace.ListOfFlights)
+            {
+                //if ()
+            }
         }
     }
 }
