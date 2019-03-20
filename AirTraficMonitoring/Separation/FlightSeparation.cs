@@ -22,10 +22,10 @@ namespace AirTraficMonitoring.Separation
 
             sepatationList.Add(track);
 
-            foreach (var newTrack in sepatationList)
-            {
-                if()
-            }
+            //foreach (var newTrack in sepatationList)
+            //{
+            //    if()
+            //}
         }
     }
 }

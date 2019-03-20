@@ -42,11 +42,11 @@ namespace AirTraficMonitoring.FlightAirspace
             Notify(track);
         }
 
-        void Notify()
+        void Notify(ITrack track)
         {
             foreach (var obs in obsList)
             {
-                obs.Update();
+                obs.Update(track);
             }
         }
 
@@ -54,7 +54,7 @@ namespace AirTraficMonitoring.FlightAirspace
         public double Height { get; set; }
         public double MinAlt { get; set; }
         public double MaxAlt { get; set; }
-        public Action<object, EventArgs> newTrackEventHandled { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        
     }
 }
 
