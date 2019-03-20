@@ -28,13 +28,18 @@ namespace AirTraficMonitoring.Test.Unit.Monitor
 
 
         [Test]
-        public void ShowAllFlights_ListOfTracksIsEmpty_ConsoleNotCalled()
+        public void ShowAllFlights_ListOfTracksIsEmpty_ConsoleLogInformationNotCalled()
         {
             var tracks = new List<ITrack>();
 
             _uut.ShowAllFlightsInAirspace(tracks);
 
             _console.DidNotReceive().LogInformation(Arg.Any<string>());
+        }
+
+        public void ShowAllFlights_ListOfTracksIsNotEmpty_ConsoleLogInformationCalled()
+        {
+            var tracks = 
         }
     }
 }

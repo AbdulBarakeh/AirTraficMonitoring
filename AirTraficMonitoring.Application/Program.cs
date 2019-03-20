@@ -1,4 +1,5 @@
-﻿using AirTraficMonitoring.Decoder;
+﻿using System.Threading;
+using AirTraficMonitoring.Decoder;
 using AirTraficMonitoring.FlightAirspace;
 using TransponderReceiver;
 
@@ -10,6 +11,11 @@ namespace AirTraficMonitoring.Application
         {
             var airspace = new Airspace(0, 0, 0, 0);
             var decoder = new FlightDecoder(airspace, TransponderReceiverFactory.CreateTransponderDataReceiver());
+
+            while (true)
+            {
+                Thread.Sleep(1000);
+            }
         }
     }
 }
