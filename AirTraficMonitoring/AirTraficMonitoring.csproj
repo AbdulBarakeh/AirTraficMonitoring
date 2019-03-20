@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Track\FlightTrack.cs" />
     <Compile Include="Track\ITrack.cs" />
+    <Compile Include="Validator\IValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
