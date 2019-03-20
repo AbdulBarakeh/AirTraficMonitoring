@@ -13,7 +13,6 @@ namespace AirTraficMonitoring.Decoder
         public FlightDecoder(IAirspace airspace, ITransponderReceiver receiver)
         {
             _airspace = airspace;
-
             receiver.TransponderDataReady += DecoderEventHandler;
         }
 
@@ -24,11 +23,11 @@ namespace AirTraficMonitoring.Decoder
                 var separated = data.Split(';');
 
                 _airspace.Add(new FlightTrack(
-                    separated[0],
-                   Convert.ToDouble(separated[1]),
-                   Convert.ToDouble(separated[2]),
-                    Convert.ToDouble(separated[3]),
-                   separated[4]));
+                separated[0],
+                Convert.ToDouble(separated[1]),
+                Convert.ToDouble(separated[2]),
+                Convert.ToDouble(separated[3]),
+                separated[4]));
             }
         }
     }

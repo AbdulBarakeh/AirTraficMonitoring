@@ -5,11 +5,8 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using AirTraficMonitoring.Separation;
-=======
 using AirTraficMonitoring;
->>>>>>> 868e7a11c9f9fb1b5f1ebff31302a23bd0370ded
 using AirTraficMonitoring.Track;
 using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Decoder;
@@ -43,7 +40,7 @@ namespace AirTraficMonitoring.FlightAirspace
             if (obj.Validation(track,this))
             {
                 //Iterate through list of flights
-
+                Notify(track);
 
                 var results = ListOfFlights.FindAll(a => a.Tag == track.Tag);
 
@@ -102,8 +99,6 @@ namespace AirTraficMonitoring.FlightAirspace
             {
                 Console.WriteLine($"{flight.Tag}\n");
             });
-
-            Notify(track);
         }
 
         void Notify(ITrack track)

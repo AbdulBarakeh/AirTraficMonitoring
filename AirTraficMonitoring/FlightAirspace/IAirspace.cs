@@ -12,7 +12,7 @@ namespace AirTraficMonitoring.FlightAirspace
 
    public interface IAirspace
    {
-       void attachment(ISeparation separation);
+        void attachment(ISeparation separation);
         void Add(ITrack track);
         double Width { get; set; }
         double Height { get; set; }
