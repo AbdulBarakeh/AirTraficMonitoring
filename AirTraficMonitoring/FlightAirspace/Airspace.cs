@@ -38,6 +38,7 @@ namespace AirTraficMonitoring.FlightAirspace
 }
 
 
+#region OldImplementation
 ////Iterate through list of flights
 
 
@@ -102,4 +103,5 @@ namespace AirTraficMonitoring.FlightAirspace
 //                //opdatere resterende 
 //            }
 
-//        }
+//        } 
+#endregion
