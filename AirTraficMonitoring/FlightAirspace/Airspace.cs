@@ -17,7 +17,7 @@ namespace AirTraficMonitoring.FlightAirspace
 {
     public class Airspace  : IAirspace
     {
-        List<ITrack> ListOfFlights = new List<ITrack>();
+        public List<ITrack> ListOfFlights = new List<ITrack>();
         List<ISeparation> obsList = new List<ISeparation>();
 
         public Airspace(double width, double height, double minAlt, double maxAlt)

@@ -9,7 +9,6 @@ namespace AirTraficMonitoring.Separation
     public class FlightSeparation : ISeparation
     {
         private Airspace _airspace;
-        List<ITrack> sepatationList = new List<ITrack>();
         public FlightSeparation(Airspace airspace)
         {
             _airspace = airspace;
@@ -20,12 +19,21 @@ namespace AirTraficMonitoring.Separation
         {
             Console.WriteLine("test");
 
-            sepatationList.Add(track);
+            foreach (var newTrack in _airspace.ListOfFlights)
+            {
+                foreach (var otherTrack in _airspace.ListOfFlights)
+                {
+                    //_airspace.ListOfFlights.FindAll(x => x.Tag != newTrack.Tag);
+                    if (newTrack.Tag != otherTrack.Tag)
+                    {
+                        if ((newTrack.XPosition - otherTrack.XPosition) < 300)
+                        {
+                        }
 
-            //foreach (var newTrack in IAirspace.sepatationList)
-            //{
-            //    if ()
-            //}
+                        //raise event
+                    }
+                }
+            }
         }
     }
 }
