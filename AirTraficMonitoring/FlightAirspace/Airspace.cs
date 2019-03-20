@@ -31,7 +31,6 @@ namespace AirTraficMonitoring.FlightAirspace
         public void Add(ITrack track)
         {
             FlightValidationn obj = new FlightValidationn();
-            //if (obj.Validation(track, Width, Height, MinAlt, MaxAlt ))
             if (obj.Validation(track,this))
             {
                 //Iterate through list of flights

@@ -10,7 +10,6 @@ namespace AirTraficMonitoring.FlightValidation
 {
     public class FlightValidationn
     {
-        //public bool Validation(ITrack track, double width, double height, double minAlt, double maxAlt)
         public bool Validation(ITrack track,IAirspace airspace)
 
         {
