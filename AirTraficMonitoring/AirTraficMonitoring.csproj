@@ -56,11 +56,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FlightValidation\FlightValidation.cs" />
     <Compile Include="Decoder\FlightDecoder.cs" />
     <Compile Include="Decoder\IDecoder.cs" />
     <Compile Include="FlightAirspace\Airspace.cs" />
     <Compile Include="FlightAirspace\IAirspace.cs" />
+    <Compile Include="FlightValidation\FlightValidationn.cs" />
     <Compile Include="Logger\Exceptions\LoggerArgumentIsNullOrWhiteSpaceException.cs" />
     <Compile Include="Logger\Exceptions\LoggerExceptionMessage.cs" />
     <Compile Include="Logger\ILog.cs" />

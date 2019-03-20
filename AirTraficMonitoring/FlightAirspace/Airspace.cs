@@ -26,12 +26,13 @@ namespace AirTraficMonitoring.FlightAirspace
             MaxAlt = maxAlt;
         }
 
-        public void Add( ITrack track)
+
+
+        public void Add(ITrack track)
         {
-
-
-
-            if (FlightValidationn.Validation(track, this))
+            FlightValidationn obj = new FlightValidationn();
+            //if (obj.Validation(track, Width, Height, MinAlt, MaxAlt ))
+            if (obj.Validation(track,this))
             {
                 //Iterate through list of flights
 
