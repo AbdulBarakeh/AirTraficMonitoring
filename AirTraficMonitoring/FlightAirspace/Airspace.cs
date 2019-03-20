@@ -11,6 +11,7 @@ using AirTraficMonitoring.Track;
 using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Decoder;
 using AirTraficMonitoring.FlightValidation;
+using System.Globalization;
 
 
 namespace AirTraficMonitoring.FlightAirspace
@@ -56,13 +57,16 @@ namespace AirTraficMonitoring.FlightAirspace
             else
             {
                 ListOfFlights.RemoveAll(t => t.Tag == track.Tag);//Incase false validation. Remove track
+                Console.WriteLine("No valid track inserted");
             }
 
 
             ListOfFlights.ForEach(flight =>{ Console.WriteLine($"{flight.Tag}\n"); } );
         }
 
-        ITrack calculate(ITrack track)
+        CultureInfo myCultureInfo = new CultureInfo("dk-DK");
+
+        public ITrack calculate(ITrack track)
         {
             //Iterate through list of flights
             var results = ListOfFlights.FindAll(a => a.Tag == track.Tag);
@@ -80,7 +84,7 @@ namespace AirTraficMonitoring.FlightAirspace
             else
             {
                 //Extract Track from list
-                var specificTrack = results.ElementAt(1);
+                var specificTrack = results.First();
                 //Find old corrdinates
                 var oldXPosition = specificTrack.XPosition;
                 var oldYPosition = specificTrack.YPosition;
@@ -90,8 +94,10 @@ namespace AirTraficMonitoring.FlightAirspace
                 //Calculate distance
                 var distance = Math.Sqrt(Math.Pow(deltaXPosition, 2) + Math.Pow(deltaYPosition, 2));
                 //Take Timestamp as string and convert to datetime
-                DateTime timeStampOld = DateTime.Parse(specificTrack.TimeStamp);
-                DateTime timeStampNew = DateTime.Parse(track.TimeStamp);
+                //var format = "yyyy/MM/dd HH:mm:ss.fff";
+                var format = "yyyyMMddHHmmssfff";
+                DateTime timeStampOld = DateTime.ParseExact(specificTrack.TimeStamp,format, myCultureInfo);
+                DateTime timeStampNew = DateTime.ParseExact(track.TimeStamp,format,myCultureInfo);
                 //Find difference in seconds
                 var timediff = (timeStampNew - timeStampOld).TotalSeconds;
                 //Calculate average speed between last and current location(Velocity)
