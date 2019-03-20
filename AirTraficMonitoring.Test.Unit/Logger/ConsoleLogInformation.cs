@@ -13,13 +13,11 @@ namespace AirTraficMonitoring.Test.Unit.Logger
     public class ConsoleLogInformation
     {
         private ConsoleLog _uut;
-        private ILogger _logger;
 
         [SetUp]
         public void Setup()
         {
-            _uut = new ConsoleLog { _log = Substitute.For<ILogger>() };
-            _logger = _uut._log;
+            _uut = new ConsoleLog();
         }
 
         [Test]
@@ -34,7 +32,7 @@ namespace AirTraficMonitoring.Test.Unit.Logger
         [Test]
         public void LogInformation_ArgumentIsEmptyString_ThrowsException()
         {
-            string argument = String.Empty;
+            var argument = string.Empty;
 
             Assert.That(() => _uut.LogInformation(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
                 .With.Message.EqualTo(LoggerExceptionMessage.ArgumentNotValid));
@@ -43,20 +41,10 @@ namespace AirTraficMonitoring.Test.Unit.Logger
         [Test]
         public void LogInformation_ArgumentIsWhiteSpaceString_ThrowException()
         {
-            string argument = "   ";
+            var argument = "   ";
 
             Assert.That(() => _uut.LogInformation(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
                 .With.Message.EqualTo(LoggerExceptionMessage.ArgumentNotValid));
-        }
-
-        [Test]
-        public void LogInformation_ArgumentValid_SerilogInformationCalled()
-        {
-            string argument = "Valid argument";
-
-            _uut.LogInformation(argument);
-
-            _logger.Received().Information(argument);
         }
     }
 }
