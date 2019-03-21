@@ -26,12 +26,12 @@ namespace AirTraficMonitoring.Validator
 
         public bool Validate(IAirspace airspace, ITrack track)
         {
-            if (airspace.Width >= track.XPosition)
+            if (track.XPosition >= airspace.Width)
             {
                 return false;
             }
 
-            if (airspace.Height >= track.YPosition)
+            if (track.YPosition >= airspace.Height)
             {
                 return false;
             }
@@ -43,10 +43,10 @@ namespace AirTraficMonitoring.Validator
 
             if (track.Altitude < airspace.MinAlt)
             {
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
         }
     }
 }
