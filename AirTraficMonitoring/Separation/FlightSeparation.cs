@@ -12,7 +12,7 @@ namespace AirTraficMonitoring.Separation
         public FlightSeparation(Airspace airspace)
         {
             _airspace = airspace;
-            _airspace.attachment(this);
+
         }
 
         public void Update(ITrack track)
