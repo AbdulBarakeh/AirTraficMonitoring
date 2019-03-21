@@ -19,9 +19,6 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
     public class GeneralTest
     {
         private FlightAirspace.Airspace _asUUT;
-        private IAirspace _SasUUT;
-
-        private ITrack _thisTrack;
         //private IAirspace _airspace;
 
         [SetUp]
@@ -29,8 +26,7 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
         public void Setup()
         {
             _asUUT = new FlightAirspace.Airspace(80000, 80000, 500, 20000);
-            _SasUUT = Substitute.For<IAirspace>();
-             _thisTrack = Substitute.For<ITrack>();
+            
         }
 
         [Test]
@@ -41,18 +37,6 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             Assert.That(_asUUT.Width, Is.EqualTo(80000));
             Assert.That(_asUUT.MinAlt, Is.EqualTo(500));
             Assert.That(_asUUT.MaxAlt, Is.EqualTo(20000));
-        }
-
-        [Test]
-        public void Substitute_AirspaceDimension_VariabelsSetCorrect()
-        {
-
-            _SasUUT.Height.Returns(80000);
-            _SasUUT.Width.Returns(80000);
-            _SasUUT.MinAlt.Returns(500);
-            _SasUUT.MaxAlt.Returns(20000);
-            Assert.That(_SasUUT.Height, Is.EqualTo(80000));
-
         }
 
         [Test]
