@@ -10,7 +10,7 @@ using AirTraficMonitoring;
 using AirTraficMonitoring.Track;
 using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Decoder;
-using AirTraficMonitoring.FlightValidation;
+using AirTraficMonitoring.Validator;
 using System.Globalization;
 
 
@@ -45,8 +45,8 @@ namespace AirTraficMonitoring.FlightAirspace
 
         public void Add(ITrack track)
         {
-            FlightValidationn obj = new FlightValidationn();
-            if (obj.Validation(track,this))
+            FlightValidator obj = new FlightValidator();
+            if (obj.Validate(track,this))
             {
 
                 ListOfFlights.Add(calculate(track));

@@ -7,7 +7,7 @@ using NSubstitute;
 using NUnit.Framework;
 using Serilog;
 using AirTraficMonitoring.FlightAirspace;
-using AirTraficMonitoring.FlightValidation;
+using AirTraficMonitoring.Validator;
 using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.Test.Unit.Airspace
