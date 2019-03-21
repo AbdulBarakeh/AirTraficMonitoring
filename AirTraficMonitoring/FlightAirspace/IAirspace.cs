@@ -9,6 +9,7 @@ namespace AirTraficMonitoring.FlightAirspace
 {
    public interface IAirspace
    {
+       event EventHandler<FlightAddedEventArg> FlightAddedEvent;
         void Add(ITrack track);
         double Width { get; set; }
         double Height { get; set; }
