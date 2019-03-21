@@ -11,8 +11,15 @@ namespace AirTraficMonitoring.Separation
         private Airspace _airspace;
         public FlightSeparation(Airspace airspace)
         {
-            _airspace = airspace;
-            _airspace.attachment(this);
+            airspace.FlightAddedEvent += HandleFlightAddedEvent;
+        }
+
+        private void HandleFlightAddedEvent(object sender, FlightAddedEventArg e)
+        {
+            foreach (var track in e.Tracks)
+            {
+                
+            }
         }
 
         public void Update(ITrack track)
