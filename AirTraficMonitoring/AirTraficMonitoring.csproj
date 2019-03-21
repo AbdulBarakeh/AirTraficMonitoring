@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlightAirspace\FlightAddedEventArg.cs" />
     <Compile Include="Separation\FlightSeparation.cs" />
     <Compile Include="Separation\ISeparation.cs" />
     <Compile Include="Validator\FlightValidator.cs" />

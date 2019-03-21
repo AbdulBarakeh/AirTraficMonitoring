@@ -18,8 +18,16 @@ namespace AirTraficMonitoring.FlightAirspace
 {
     public class Airspace  : IAirspace
     {
+
        public List<ITrack> ListOfFlights = new List<ITrack>();
-        List<ISeparation> obsList = new List<ISeparation>();
+
+
+        public event EventHandler<FlightAddedEventArg> FlightAddedEvent;
+
+        protected virtual void OnFlightAddedEvent(FlightAddedEventArg e)
+        {
+            FlightAddedEvent?.Invoke(this,e);
+        }
 
         public Airspace(double width, double height, double minAlt, double maxAlt)
         {
@@ -30,29 +38,20 @@ namespace AirTraficMonitoring.FlightAirspace
             MaxAlt = maxAlt;
         }
 
-        public void attachment(ISeparation separation)
-        {
-            obsList.Add(separation);
-        }
-
-        void Notify(ITrack track)
-        {
-            foreach (var obs in obsList)
-            {
-                obs.Update(track);
-            }
-        }
+ 
 
         public void Add(ITrack track)
         {
             FlightValidator obj = new FlightValidator();
-            if (obj.Validate(track,this))
+            if (obj.Validate(this,track))
             {
 
-                ListOfFlights.Add(calculate(track));
+                 ListOfFlights.Add(calculate(track));
 
-                Notify(track);
-                                
+      
+
+                 OnFlightAddedEvent(new FlightAddedEventArg {Tracks = ListOfFlights});
+
             }
             else
             {
