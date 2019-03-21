@@ -10,6 +10,10 @@ namespace AirTraficMonitoring.Decoder
     {
         private readonly IAirspace _airspace;
 
+        public FlightDecoder()
+        {
+        }
+
         public FlightDecoder(IAirspace airspace, ITransponderReceiver receiver)
         {
             _airspace = airspace;
