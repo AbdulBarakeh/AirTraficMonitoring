@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AirTraficMonitoring.FlightValidation
 {
-    public class FlightValidationn
+    public class FlightValidation : IFlightValidation
     {
-        public bool Validation(ITrack track,IAirspace airspace)
+        public bool Validation(ITrack track, IAirspace airspace)
 
         {
             if (airspace.Width < track.XPosition)
@@ -32,8 +32,8 @@ namespace AirTraficMonitoring.FlightValidation
             {
                 return false;
             }
-            return true;
 
+            return true;
         }
     }
 }
