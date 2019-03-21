@@ -9,7 +9,7 @@ namespace AirTraficMonitoring.Separation
     public class FlightSeparation : ISeparation
     {
         private Airspace _airspace;
-        public FlightSeparation(Airspace airspace)
+        public FlightSeparation(IAirspace airspace)
         {
             airspace.FlightAddedEvent += HandleFlightAddedEvent;
         }

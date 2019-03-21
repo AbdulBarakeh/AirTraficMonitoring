@@ -12,14 +12,19 @@ namespace AirTraficMonitoring.Test.Unit.Separation
         private FlightSeparation _uut;
 
         //private FlightAddedEventArg _receivedEventArg;
-        private TestSeparationSource _airspace;
+        private IAirspace _airspace;
 
         [SetUp]
         public void Setup()
         {
             _airspace = Substitute.For<IAirspace>();
             _uut = new FlightSeparation(_airspace);
+        }
 
+        void test()
+        {
+            var test = new SeparatorTest();
+            test.
         }
     }
 }

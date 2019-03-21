@@ -7,16 +7,11 @@ using NUnit.Framework;
 
 namespace AirTraficMonitoring.Test.Unit.Separation
 {
-    internal class TestSeparationSource : ECS.IAirspace
+    public static class TestSeparationSource
     {
-        public event EventHandler<FlightAddedEventArg> FlightAddedEvent;
-        public void RaiseEvent(List<ITrack> newTrack)
+        public static ITrack CreateTrack()
         {
-            FlightAddedEvent?.Invoke(
-                this,
-                new FlightAddedEventArg() { Tracks = newTrack}
-                );
-
+            return new FlightTrack("HTP909", 0, 0, 0, "1045");
         }
     }
 }
