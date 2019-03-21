@@ -56,21 +56,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Validator\FlightValidator.cs" />
     <Compile Include="Decoder\FlightDecoder.cs" />
     <Compile Include="Decoder\IDecoder.cs" />
     <Compile Include="FlightAirspace\Airspace.cs" />
     <Compile Include="FlightAirspace\IAirspace.cs" />
-    <Compile Include="FlightValidation\FlightValidationn.cs" />
     <Compile Include="Logger\Exceptions\LoggerArgumentIsNullOrWhiteSpaceException.cs" />
     <Compile Include="Logger\Exceptions\LoggerExceptionMessage.cs" />
     <Compile Include="Logger\ILog.cs" />
     <Compile Include="Logger\ConsoleLog.cs" />
     <Compile Include="Logger\FileLog.cs" />
+    <Compile Include="Monitor\ConsoleMonitor.cs" />
+    <Compile Include="Monitor\IMonitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Separation\FlightSeparation.cs" />
-    <Compile Include="Separation\ISeparation.cs" />
     <Compile Include="Track\FlightTrack.cs" />
     <Compile Include="Track\ITrack.cs" />
+    <Compile Include="Validator\IValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
