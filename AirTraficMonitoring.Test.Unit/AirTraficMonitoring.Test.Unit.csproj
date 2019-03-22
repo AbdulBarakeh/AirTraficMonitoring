@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Airspace\CalculatorTest.cs" />
     <Compile Include="Airspace\GeneralTest.cs" />
     <Compile Include="Logger\ConsoleLogError.cs" />
     <Compile Include="Logger\ConsoleLogInformation.cs" />
