@@ -9,7 +9,7 @@ namespace AirTraficMonitoring.Application
     {
         static void Main(string[] args)
         {
-            var airspace = new Airspace(0, 0, 0, 0);
+            var airspace = new Airspace(80000, 80000, 500, 20000);
             var decoder = new FlightDecoder(airspace, TransponderReceiverFactory.CreateTransponderDataReceiver());
 
             while (true)

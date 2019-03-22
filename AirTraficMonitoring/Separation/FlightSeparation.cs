@@ -58,6 +58,7 @@ namespace AirTraficMonitoring.Separation
 
         }
 
+
         //public void Update(ITrack track)
         //{
         //    Console.WriteLine("test");
