@@ -9,38 +9,74 @@ namespace AirTraficMonitoring.Separation
     public class FlightSeparation : ISeparation
     {
         private Airspace _airspace;
+        private bool OnEvent = false;
+        public event EventHandler<SeparationWarningEventArg> SeparationWarningEvent;
+        public List<ITrack> SeparationList = new List<ITrack>();
         public FlightSeparation(IAirspace airspace)
         {
             airspace.FlightAddedEvent += HandleFlightAddedEvent;
+        }
+
+        protected virtual void OnSeparationAddedEvent(SeparationWarningEventArg arg)
+        {
+            SeparationWarningEvent?.Invoke(this, arg);
         }
 
         private void HandleFlightAddedEvent(object sender, FlightAddedEventArg e)
         {
             foreach (var track in e.Tracks)
             {
-                
-            }
-        }
-
-        public void Update(ITrack track)
-        {
-            Console.WriteLine("test");
-
-            foreach (var newTrack in _airspace.ListOfFlights)
-            {
-                foreach (var otherTrack in _airspace.ListOfFlights)
+                foreach (var otherTrack in e.Tracks)
                 {
-                    //_airspace.ListOfFlights.FindAll(x => x.Tag != newTrack.Tag);
-                    if (newTrack.Tag != otherTrack.Tag)
+                    if (track.Tag != otherTrack.Tag)
                     {
-                        if ((newTrack.XPosition - otherTrack.XPosition) < 300)
-                        {
-                        }
+                        var deltaXPos = track.XPosition - otherTrack.XPosition;
+                        var deltaYPos = track.YPosition - otherTrack.YPosition;
+                        var deltaAlt = Math.Abs(track.Altitude - otherTrack.Altitude);
 
-                        //raise event
+                        //var distance = Math.Sqrt(Math.Pow(deltaXPos, 2) + Math.Pow(deltaYPos, 2));
+                        while((Math.Sqrt(Math.Pow(deltaXPos, 2) + Math.Pow(deltaYPos, 2)) < 5000
+                            && deltaAlt < 300))
+                        {
+                            Console.WriteLine("Plains too close");
+                            if (!OnEvent)
+                            {
+                                SeparationList.Add(track);
+                                SeparationList.Add(otherTrack);
+
+                                OnSeparationAddedEvent(new SeparationWarningEventArg {SeparationList = SeparationList});
+                                OnEvent = true;
+                            }
+                        } 
                     }
                 }
             }
         }
+
+        private void CalculateDistance()
+        {
+
+        }
+
+        //public void Update(ITrack track)
+        //{
+        //    Console.WriteLine("test");
+
+        //    foreach (var newTrack in _airspace.ListOfFlights)
+        //    {
+        //        foreach (var otherTrack in _airspace.ListOfFlights)
+        //        {
+        //            //_airspace.ListOfFlights.FindAll(x => x.Tag != newTrack.Tag);
+        //            if (newTrack.Tag != otherTrack.Tag)
+        //            {
+        //                if ((newTrack.XPosition - otherTrack.XPosition) < 300)
+        //                {
+        //                }
+
+        //                //raise event
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
