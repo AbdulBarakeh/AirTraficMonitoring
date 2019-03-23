@@ -82,6 +82,8 @@
     <Compile Include="Logger\FileLogInformation.cs" />
     <Compile Include="Logger\FileLogWarning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Separation\Separator.cs" />
+    <Compile Include="Separation\TestSeparationSource.cs" />
     <Compile Include="Validation\GeneralTests.cs" />
   </ItemGroup>
   <ItemGroup>
