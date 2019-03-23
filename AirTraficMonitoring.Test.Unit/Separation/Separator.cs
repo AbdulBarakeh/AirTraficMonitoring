@@ -28,7 +28,7 @@ namespace AirTraficMonitoring.Test.Unit.Separation
         [Test]
         public void FlightAdded_ListIsNotEmpty_()
         {
-            myList.Add(TrackFactory.CreateTestTrack());
+            //myList.Add(TrackFactory.CreateTestTrack());
             _airspace.FlightAddedEvent += Raise.EventWith(new FlightAddedEventArg { Tracks = myList });
             Assert.That(_receivedEventArg.Tracks, Is.Null);
         }
