@@ -32,7 +32,7 @@ namespace AirTraficMonitoring.Test.Unit.Separation
         }
 
         [Test]
-        void testhasfjg()
+        public void Testhasfjg()
         {
             var mytrack = new FlightTrack("GE", 0, 0, 0, "1782");
             myList.Add(mytrack);
