@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AirTraficMonitoring.Test.Unit\AirTraficMonitoring.Test.Unit.csproj">
+      <Project>{884025f7-1584-4180-8dde-70a9af94174a}</Project>
+      <Name>AirTraficMonitoring.Test.Unit</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AirTraficMonitoring\AirTraficMonitoring.csproj">
       <Project>{82729311-c4c4-484d-9964-3a35e0fe3c77}</Project>
       <Name>AirTraficMonitoring</Name>
