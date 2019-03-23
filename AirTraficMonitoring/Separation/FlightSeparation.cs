@@ -8,8 +8,7 @@ namespace AirTraficMonitoring.Separation
 {
     public class FlightSeparation : ISeparation
     {
-        private Airspace _airspace;
-        private bool OnEvent = false;
+        private bool _onEvent;
         public event EventHandler<SeparationWarningEventArg> SeparationWarningEvent;
         public List<ITrack> SeparationList = new List<ITrack>();
         public FlightSeparation(IAirspace airspace)
@@ -39,13 +38,13 @@ namespace AirTraficMonitoring.Separation
                             && deltaAlt < 300))
                         {
                             Console.WriteLine("Plains too close");
-                            if (!OnEvent)
+                            if (!_onEvent)
                             {
                                 SeparationList.Add(track);
                                 SeparationList.Add(otherTrack);
 
                                 OnSeparationAddedEvent(new SeparationWarningEventArg {SeparationList = SeparationList});
-                                OnEvent = true;
+                                _onEvent = true;
                             }
                         } 
                     }
