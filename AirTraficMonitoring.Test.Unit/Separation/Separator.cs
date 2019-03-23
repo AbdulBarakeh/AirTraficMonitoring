@@ -3,6 +3,7 @@ using NSubstitute;
 using NUnit.Framework;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Separation;
+using AirTraficMonitoring.Test.Unit.Monitor;
 using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.Test.Unit.Separation
@@ -27,7 +28,7 @@ namespace AirTraficMonitoring.Test.Unit.Separation
         [Test]
         public void FlightAdded_ListIsNotEmpty_()
         {
-            myList.Add();
+            myList.Add(TrackFactory.CreateTestTrack());
             _airspace.FlightAddedEvent += Raise.EventWith(new FlightAddedEventArg { Tracks = myList });
             Assert.That(_receivedEventArg.Tracks, Is.Null);
         }
