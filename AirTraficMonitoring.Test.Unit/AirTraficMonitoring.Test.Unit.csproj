@@ -67,8 +67,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TransponderReceiver, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TransponderReceiver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Airspace\GeneralTest.cs" />
     <Compile Include="Logger\ConsoleLogError.cs" />
     <Compile Include="Logger\ConsoleLogInformation.cs" />
     <Compile Include="Logger\ConsoleLogWarning.cs" />
@@ -76,16 +81,25 @@
     <Compile Include="Logger\FileLogInformation.cs" />
     <Compile Include="Logger\FileLogWarning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\GeneralTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AirTraficMonitoring.Application\AirTraficMonitoring.Application.csproj">
+      <Project>{02ef3a46-6e7b-4b80-90bf-c6334c660083}</Project>
+      <Name>AirTraficMonitoring.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AirTraficMonitoring\AirTraficMonitoring.csproj">
       <Project>{82729311-c4c4-484d-9964-3a35e0fe3c77}</Project>
       <Name>AirTraficMonitoring</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

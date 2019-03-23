@@ -1,8 +1,6 @@
-﻿using System;
-using System.Configuration;
-using System.Runtime.Remoting.Channels;
-using AirTraficMonitoring.Logger;
+﻿using System.Threading;
 using AirTraficMonitoring.Decoder;
+using AirTraficMonitoring.FlightAirspace;
 using TransponderReceiver;
 
 namespace AirTraficMonitoring.Application
@@ -11,13 +9,13 @@ namespace AirTraficMonitoring.Application
     {
         static void Main(string[] args)
         {
-            ILog file = new ConsoleLog();
+            var airspace = new Airspace(80000, 80000, 500, 20000);
+            var decoder = new FlightDecoder(airspace, TransponderReceiverFactory.CreateTransponderDataReceiver());
 
-            file.LogInformation("");
-
-            //FlightDecoder.receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
-            //FlightDecoder.receiver.TransponderDataReady += FlightDecoder.DecoderEventHandler;
-
+            while (true)
+            {
+                Thread.Sleep(1000);
+            }
         }
     }
 }
