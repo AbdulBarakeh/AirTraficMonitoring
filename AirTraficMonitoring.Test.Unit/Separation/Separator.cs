@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
-using Serilog;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Separation;
+using AirTraficMonitoring.Test.Unit.Monitor;
 using AirTraficMonitoring.Track;
-using NUnit.Framework.Constraints;
 
 namespace AirTraficMonitoring.Test.Unit.Separation
 {
@@ -28,14 +23,12 @@ namespace AirTraficMonitoring.Test.Unit.Separation
         {
             _airspace = Substitute.For<IAirspace>();
             _uut = new FlightSeparation(_airspace);
-
         }
 
         [Test]
-        public void Testhasfjg()
+        public void FlightAdded_ListIsNotEmpty_()
         {
-            var mytrack = new FlightTrack("GE", 0, 0, 0, "1782");
-            myList.Add(mytrack);
+            myList.Add(TrackFactory.CreateTestTrack());
             _airspace.FlightAddedEvent += Raise.EventWith(new FlightAddedEventArg { Tracks = myList });
             Assert.That(_receivedEventArg.Tracks, Is.Null);
         }
