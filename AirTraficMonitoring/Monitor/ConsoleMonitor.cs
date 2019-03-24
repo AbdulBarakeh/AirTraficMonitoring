@@ -30,14 +30,7 @@ namespace AirTraficMonitoring.Monitor
 
             foreach (var track in tracks)
             {
-                try
-                {
-                    _console.LogInformation($"{track.Tag}");
-                }
-                catch (LoggerArgumentIsNullOrWhiteSpaceException e)
-                {
-                    _console.LogError(e.Message);
-                }
+                _console.LogInformation($"{track.Tag}");
             }
         }
         #endregion
@@ -52,14 +45,7 @@ namespace AirTraficMonitoring.Monitor
         {
             if (tracks.Count != 2) return;
 
-            try
-            {
-                _console.LogInformation($"SEPARATION: [{tracks[0].Tag}, {tracks[1].Tag}]");
-            }
-            catch (LoggerArgumentIsNullOrWhiteSpaceException e)
-            {
-                _console.LogError(e.Message);
-            }   
+            _console.LogInformation($"SEPARATION: [{tracks[0].Tag}, {tracks[1].Tag}]");
         }
         #endregion
     }
