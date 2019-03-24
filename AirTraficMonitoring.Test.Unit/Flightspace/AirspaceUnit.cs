@@ -2,9 +2,7 @@
 using NUnit.Framework;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Test.Unit.Monitor;
-using AirTraficMonitoring.Track;
 using AirTraficMonitoring.Validator;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using NSubstitute;
 
 namespace AirTraficMonitoring.Test.Unit.Flightspace
@@ -14,9 +12,6 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
     [TestFixture]
     public class AirspaceUnit
     {
-        private const string DefaultFlightTag = "ABC123";
-        private const string DefaultTimeStamp = "20190321155458675";
-
         private Airspace _uut;
         private IValidator _flightValidator;
         private bool _eventRaised;
@@ -25,16 +20,16 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
         public void Setup()
         {
             _flightValidator = Substitute.For<IValidator>();
-            
+
             _uut = new Airspace(_flightValidator, 80000, 80000, 500, 20000);
 
             _uut.FlightAddedEvent += (sender, args) => _eventRaised = true;
         }
-        
+
         [Test]
         public void AddFlight_FlightAirspace_ValidatorCalled()
         {
-            var flightTrack = TrackFactory.CreateTestTrack(); 
+            var flightTrack = TrackFactory.CreateTestTrack();
 
             _uut.Add(flightTrack);
 
