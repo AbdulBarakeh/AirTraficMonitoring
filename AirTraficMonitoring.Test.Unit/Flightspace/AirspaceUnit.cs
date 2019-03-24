@@ -86,5 +86,18 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
 
             Assert.That(_eventRaised, Is.EqualTo(true));
         }
+
+        [Test]
+        public void AddFlight_FlightFromListIsNoLongerWithinAirspace_RemoveFlight()
+        {
+            _uut.ListOfFlights.Add(TrackFactory.CreateTestTrack());
+
+            var flightTrack = TrackFactory.CreateTestTrack();
+            _flightValidator.Validate(_uut, flightTrack).Returns(false);
+
+            _uut.Add(flightTrack);
+
+            Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(0));
+        }
     }
 }
