@@ -7,27 +7,22 @@ namespace AirTraficMonitoring.Validator
     {
         public bool Validate(IAirspace airspace, ITrack track)
         {
-            if (track.XPosition <= 0 || track.XPosition >= airspace.Width)
+            var height = new
             {
-                return false;
-            }
+                isValid = (track.XPosition <= airspace.Height && track.XPosition >= 0),
+            };
 
-            if (track.YPosition <= 0 || track.YPosition >= airspace.Height)
+            var width = new
             {
-                return false;
-            }
+                isValid = (track.YPosition <= airspace.Width && track.YPosition >= 0),
+            };
 
-            if (track.Altitude > airspace.MaxAlt)
+            var altitude = new
             {
-                return false;
-            }
+                isValid = (track.Altitude <= airspace.MaxAlt && track.Altitude >= airspace.MinAlt),
+            };
 
-            if (track.Altitude < airspace.MinAlt)
-            {
-                return false;
-            }
-
-            return true;
+            return (height.isValid && width.isValid && altitude.isValid);
         }
     }
 }
