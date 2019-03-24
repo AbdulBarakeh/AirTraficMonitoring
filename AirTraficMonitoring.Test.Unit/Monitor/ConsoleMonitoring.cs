@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Monitor;
