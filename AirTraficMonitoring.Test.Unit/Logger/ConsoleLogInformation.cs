@@ -1,9 +1,6 @@
-﻿using System;
-using AirTraficMonitoring.Logger;
+﻿using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Logger.Exceptions;
-using NSubstitute;
 using NUnit.Framework;
-using Serilog;
 
 namespace AirTraficMonitoring.Test.Unit.Logger
 {

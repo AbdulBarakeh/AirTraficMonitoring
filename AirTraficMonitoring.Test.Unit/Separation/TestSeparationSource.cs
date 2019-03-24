@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AirTraficMonitoring.FlightAirspace;
-using AirTraficMonitoring.Track;
-using NSubstitute;
-using NUnit.Framework;
+﻿using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.Test.Unit.Separation
 {
