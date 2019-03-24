@@ -39,10 +39,18 @@ namespace AirTraficMonitoring.Test.Unit.Logger
         [Test]
         public void LogWarning_ArgumentIsWhiteSpaceString_ThrowException()
         {
-            var argument = "   ";
+            const string argument = "   ";
 
             Assert.That(() => _uut.LogWarning(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
                 .With.Message.EqualTo(LoggerExceptionMessage.ArgumentNotValid));
+        }
+
+        [Test]
+        public void LogWarning_ArgumentIsNotNullOrWhiteSpace_NoExceptionThrown()
+        {
+            const string argument = "Valid String";
+
+            Assert.That(() => _uut.LogWarning(argument), Throws.Nothing);
         }
 
     }

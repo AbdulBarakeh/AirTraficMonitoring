@@ -1,5 +1,7 @@
-﻿using AirTraficMonitoring.Logger;
+﻿using System;
+using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Logger.Exceptions;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace AirTraficMonitoring.Test.Unit.Logger
@@ -38,10 +40,18 @@ namespace AirTraficMonitoring.Test.Unit.Logger
         [Test]
         public void LogError_ArgumentIsWhiteSpaceString_ThrowException()
         {
-            var argument = "   ";
+            const string argument = "   ";
 
             Assert.That(() => _uut.LogError(argument), Throws.TypeOf<LoggerArgumentIsNullOrWhiteSpaceException>()
                 .With.Message.EqualTo(LoggerExceptionMessage.ArgumentNotValid));
+        }
+
+        [Test]
+        public void LogError_ArgumentIsNotNullOrWhiteSpace_NoExceptionThrown()
+        {
+            const string argument = "Valid String";
+
+            Assert.That(() => _uut.LogError(argument), Throws.Nothing);
         }
     }
 }
