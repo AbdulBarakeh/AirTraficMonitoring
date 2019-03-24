@@ -1,7 +1,6 @@
 ﻿using System;
-using AirTraficMonitoring.Track;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using AirTraficMonitoring.Track;
 using AirTraficMonitoring.FlightAirspace;
 
 namespace AirTraficMonitoring.Separation

@@ -1,5 +1,4 @@
 ﻿using AirTraficMonitoring.Track;
-using NSubstitute;
 
 namespace AirTraficMonitoring.Test.Unit.Monitor
 {

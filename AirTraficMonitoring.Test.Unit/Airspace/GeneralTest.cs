@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NSubstitute;
-using NUnit.Framework;
-using Serilog;
+﻿using NUnit.Framework;
 using AirTraficMonitoring.FlightAirspace;
-using AirTraficMonitoring.Validator;
 using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.Test.Unit.Airspace
@@ -34,7 +26,6 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
 
             _asUUT.Add(_track);
 
-            //Subscribes aka listening to event.
             _asUUT.FlightAddedEvent += (x, args) => { _receivedEventArg = args; };
             
         }
@@ -54,6 +45,7 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             _asUUT.Add(_testTrackTwo);
             Assert.That(_receivedEventArg, Is.Null);
         }
+
         [Test]
         public void Checking_If_Listofflights_Is_Empty_Equal_Null_NegativeValue()
         {

@@ -1,6 +1,5 @@
 ﻿using System;
 using AirTraficMonitoring.Logger.Exceptions;
-using Serilog;
 
 namespace AirTraficMonitoring.Logger
 {

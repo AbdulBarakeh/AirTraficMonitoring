@@ -5,8 +5,6 @@ namespace AirTraficMonitoring.Validator
 {
     public class FlightValidator : IValidator
     {
-
-
         public bool Validate(IAirspace airspace, ITrack track)
         {
             if (track.XPosition <= 0 || track.XPosition >= airspace.Width)
