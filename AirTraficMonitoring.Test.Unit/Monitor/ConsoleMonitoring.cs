@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Monitor;
+using AirTraficMonitoring.Separation;
 using AirTraficMonitoring.Track;
 using NSubstitute;
 using NUnit.Framework;
@@ -17,14 +18,16 @@ namespace AirTraficMonitoring.Test.Unit.Monitor
         private ConsoleMonitor _uut;
         private ILog _console;
         private IAirspace _airspace;
+        private ISeparation _separation;
 
         [SetUp]
         public void Setup()
         {
             _console = Substitute.For<ILog>();
             _airspace = Substitute.For<IAirspace>();
+            _separation = Substitute.For<ISeparation>();
 
-            _uut = new ConsoleMonitor(_console, _airspace);
+            _uut = new ConsoleMonitor(_console, _airspace, _separation);
         }
 
 
