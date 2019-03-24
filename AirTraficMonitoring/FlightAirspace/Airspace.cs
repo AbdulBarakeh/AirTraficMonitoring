@@ -39,8 +39,9 @@ namespace AirTraficMonitoring.FlightAirspace
             var obj = new FlightValidator();
             if (obj.Validate(this, track))
             {
-                 ListOfFlights.Add(Calculate(track));
-                 OnFlightAddedEvent(new FlightAddedEventArg {Tracks = ListOfFlights});
+                ListOfFlights.Add(Calculate(track));
+
+                OnFlightAddedEvent(new FlightAddedEventArg {Tracks = ListOfFlights});
             }
             else
             {

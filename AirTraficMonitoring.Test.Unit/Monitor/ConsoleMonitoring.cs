@@ -94,21 +94,6 @@ namespace AirTraficMonitoring.Test.Unit.Monitor
         }
 
         [Test]
-        public void ShowAllFlights_NoFlightInListIsEmpty_ConsoleLogErrorNotCalled()
-        {
-            var tracks = new List<ITrack>()
-            {
-                TrackFactory.CreateTestTrack(),
-                TrackFactory.CreateTestTrack(),
-                TrackFactory.CreateTestTrack()
-            };
-
-            _uut.ShowAllFlightsInAirspace(tracks);
-
-            _console.DidNotReceive().LogError(Arg.Any<string>());
-        }
-
-        [Test]
         public void ShowAllFlights_OneFlightInListIsNull_ThrowsException()
         {        
             Assert.That(() => _uut.ShowAllFlightsInAirspace(null), Throws.Exception);
