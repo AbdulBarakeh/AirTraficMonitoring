@@ -4,8 +4,6 @@ using System.Linq;
 using AirTraficMonitoring.Track;
 using AirTraficMonitoring.Validator;
 using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
-
 
 namespace AirTraficMonitoring.FlightAirspace
 {
