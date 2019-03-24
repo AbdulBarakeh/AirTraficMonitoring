@@ -19,7 +19,7 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
 
         private Airspace _uut;
         private IValidator _flightValidator;
-        private FlightAddedEventArg _receivedEventArg;
+        private bool _eventRaised;
 
         [SetUp]
         public void Setup()
@@ -28,7 +28,7 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
             
             _uut = new Airspace(_flightValidator, 80000, 80000, 500, 20000);
 
-            _uut.FlightAddedEvent += (sender, args) => { _receivedEventArg = args; };
+            _uut.FlightAddedEvent += (sender, args) => _eventRaised = true;
         }
         
         [Test]
@@ -75,6 +75,16 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
 
             Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(1));
         }
-      
+
+        [Test]
+        public void AddFlight_FlightAddedEvent_EventIsRaised()
+        {
+            var flightTrack = TrackFactory.CreateTestTrack();
+            _flightValidator.Validate(_uut, flightTrack).Returns(true);
+
+            _uut.Add(flightTrack);
+
+            Assert.That(_eventRaised, Is.EqualTo(true));
+        }
     }
 }
