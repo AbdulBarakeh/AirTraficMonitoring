@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
-using Serilog;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Separation;
+using AirTraficMonitoring.Test.Unit.Monitor;
 using AirTraficMonitoring.Track;
-using NUnit.Framework.Constraints;
 
 namespace AirTraficMonitoring.Test.Unit.Separation
 {
@@ -20,6 +15,7 @@ namespace AirTraficMonitoring.Test.Unit.Separation
         private FlightSeparation _uut;
 
         private FlightAddedEventArg _receivedEventArg;
+        private SeparationWarningEventArg _separationWarningEventArg;
         private IAirspace _airspace;
         private List<ITrack> myList = new List<ITrack>();
 
@@ -28,16 +24,32 @@ namespace AirTraficMonitoring.Test.Unit.Separation
         {
             _airspace = Substitute.For<IAirspace>();
             _uut = new FlightSeparation(_airspace);
-
+            _receivedEventArg = new FlightAddedEventArg();
+            _separationWarningEventArg = new SeparationWarningEventArg();
         }
 
         [Test]
-        void testhasfjg()
+        public void FlightAdded_ListIsEmpty()
         {
-            var mytrack = new FlightTrack("GE", 0, 0, 0, "1782");
-            myList.Add(mytrack);
+            //myList.Add(TrackFactory.CreateTestTrack());
             _airspace.FlightAddedEvent += Raise.EventWith(new FlightAddedEventArg { Tracks = myList });
             Assert.That(_receivedEventArg.Tracks, Is.Null);
+        }
+
+        [Test]
+        public void FlightAdded_ListIsNotEmpty()
+        {
+            myList.Add(TrackFactory.CreateTestTrack());
+            _airspace.FlightAddedEvent += Raise.EventWith(new FlightAddedEventArg { Tracks = myList });
+            Assert.That(_receivedEventArg.Tracks, Is.Null);
+        }
+
+        [Test]
+        public void FlightAdded_SeparationWarning()
+        {
+            myList.Add(new FlightTrack("CBA321", 10, 10, 10, "9399302"));
+            _airspace.FlightAddedEvent += Raise.EventWith(new FlightAddedEventArg { Tracks = myList });
+            Assert.That(_separationWarningEventArg.SeparationList, Is.Not.Empty);
         }
     }
 }
