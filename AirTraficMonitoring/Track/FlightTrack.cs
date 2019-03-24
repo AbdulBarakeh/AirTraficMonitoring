@@ -1,4 +1,7 @@
-﻿namespace AirTraficMonitoring.Track
+﻿using System;
+using System.Collections.Generic;
+
+namespace AirTraficMonitoring.Track
 {
     public class FlightTrack : ITrack
     {
@@ -20,5 +23,10 @@
         public string TimeStamp { get; set; }
         public double Velocity { get; set; }
         public double CompassCourse { get; set; }
+
+        public static implicit operator List<object>(FlightTrack v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
