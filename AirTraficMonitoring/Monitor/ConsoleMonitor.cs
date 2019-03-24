@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Logger;
-using AirTraficMonitoring.Logger.Exceptions;
 using AirTraficMonitoring.Separation;
 using AirTraficMonitoring.Track;
 
@@ -30,7 +29,11 @@ namespace AirTraficMonitoring.Monitor
 
             foreach (var track in tracks)
             {
-                _console.LogInformation($"{track.Tag}");
+                _console.LogInformation($"{track.Tag}\t" +
+                                        $"[{track.XPosition}:{track.YPosition}]\t" +
+                                        $"[{track.Altitude}]\t" +
+                                        $"[{track.Velocity} m/s]\t" +
+                                        $"[{track.CompassCourse} deg]");
             }
         }
         #endregion
@@ -48,5 +51,6 @@ namespace AirTraficMonitoring.Monitor
             _console.LogInformation($"SEPARATION: [{tracks[0].Tag}, {tracks[1].Tag}]");
         }
         #endregion
+
     }
 }
