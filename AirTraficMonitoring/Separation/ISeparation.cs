@@ -1,10 +1,4 @@
-﻿using AirTraficMonitoring.Track;
-
-namespace AirTraficMonitoring.Separation
+﻿namespace AirTraficMonitoring.Separation
 {
-    public interface ISeparation
-    {
-        
-
-    }
+    public interface ISeparation { }
 }
