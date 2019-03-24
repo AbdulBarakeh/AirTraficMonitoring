@@ -110,18 +110,9 @@ namespace AirTraficMonitoring.Test.Unit.Monitor
         }
 
         [Test]
-        [ExcludeFromCodeCoverage]
-        [Ignore("Not going into catch block of ShowAllFlights method")]
-        public void ShowAllFlights_OneFlightInListIsEmpty_ConsoleLogErrorCalled()
-        {
-            var tracks = new List<ITrack>()
-            {
-                new FlightTrack(string.Empty, 0, 0, 0, string.Empty)
-            };
-
-            _uut.ShowAllFlightsInAirspace(tracks);
-            
-            _console.Received().LogError(Arg.Any<string>());
+        public void ShowAllFlights_OneFlightInListIsNull_ThrowsException()
+        {        
+            Assert.That(() => _uut.ShowAllFlightsInAirspace(null), Throws.Exception);
         }
 
         #endregion
@@ -204,6 +195,11 @@ namespace AirTraficMonitoring.Test.Unit.Monitor
             _console.DidNotReceive().LogError(Arg.Any<string>());
         }
 
+        [Test]
+        public void ShowSeparationCondition_FlightInListIsNull_ThrowsException()
+        {
+            Assert.That(() => _uut.ShowSeparationCondition(null), Throws.Exception);
+        }
 
         #endregion
 
