@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Airspace\GeneralTest.cs" />
-    <Compile Include="Decoder\Decoder.cs" />
+    <Compile Include="Decoder\Decoding.cs" />
     <Compile Include="Logger\ConsoleLogError.cs" />
     <Compile Include="Logger\ConsoleLogInformation.cs" />
     <Compile Include="Logger\ConsoleLogWarning.cs" />

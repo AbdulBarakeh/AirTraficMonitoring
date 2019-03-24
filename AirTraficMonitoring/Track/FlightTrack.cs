@@ -5,12 +5,12 @@ namespace AirTraficMonitoring.Track
 {
     public class FlightTrack : ITrack
     {
-        public FlightTrack(string tag, double xpos, double ypos, double alt, string time)
+        public FlightTrack(string tag, string xpos, string ypos, string alt, string time)
         {
             Tag = tag;
-            XPosition = xpos;
-            YPosition = ypos;
-            Altitude = alt;
+            XPosition = Convert.ToDouble(xpos);
+            YPosition = Convert.ToDouble(ypos);
+            Altitude = Convert.ToDouble(alt);
             TimeStamp = time;
             Velocity = 0;
             CompassCourse = 0;

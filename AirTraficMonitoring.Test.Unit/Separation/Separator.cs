@@ -51,7 +51,7 @@ namespace AirTraficMonitoring.Test.Unit.Separation
         [Ignore("This test is breaking continuous integration")]
         public void FlightAdded_SeparationWarning()
         {
-            myList.Add(new FlightTrack("CBA321", 10, 10, 10, "9399302"));
+            myList.Add(new FlightTrack("CBA321", "10", "10", "10", "9399302"));
             _airspace.FlightAddedEvent += Raise.EventWith(new FlightAddedEventArg { Tracks = myList });
             Assert.That(_separationWarningEventArg.SeparationList, Is.Not.Empty);
         }

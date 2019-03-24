@@ -2,6 +2,7 @@
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Track;
 using System;
+using System.Collections.Generic;
 using TransponderReceiver;
 
 namespace AirTraficMonitoring.Decoder
@@ -18,17 +19,17 @@ namespace AirTraficMonitoring.Decoder
 
         public void DecoderEventHandler(object sender, RawTransponderDataEventArgs e)
         {
-            foreach (var data in e.TransponderData)
+            e.TransponderData.ForEach(data =>
             {
-                var separated = data.Split(';');
+                var trackInfo = Decrypt(data);
 
-                _airspace.Add(new FlightTrack(
-            separated[0],
-           Convert.ToDouble(separated[1]),
-           Convert.ToDouble(separated[2]),
-            Convert.ToDouble(separated[3]),
-           separated[4]));
-            }
+                _airspace.Add(new FlightTrack(trackInfo[0], trackInfo[1], trackInfo[2], trackInfo[3], trackInfo[4]));
+            });
+        }
+
+        public List<string> Decrypt(string transponderMessage)
+        {
+            return new List<string>(transponderMessage.Split(';'));
         }
     }
 }
