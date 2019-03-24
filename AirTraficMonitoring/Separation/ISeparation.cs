@@ -1,4 +1,9 @@
-﻿namespace AirTraficMonitoring.Separation
+﻿using System;
+
+namespace AirTraficMonitoring.Separation
 {
-    public interface ISeparation { }
+    public interface ISeparation
+    {
+        event EventHandler<SeparationWarningEventArg> SeparationWarningEvent;
+    }
 }

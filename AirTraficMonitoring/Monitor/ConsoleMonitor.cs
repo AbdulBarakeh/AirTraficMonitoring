@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Logger.Exceptions;
+using AirTraficMonitoring.Separation;
 using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.Monitor
@@ -11,13 +11,17 @@ namespace AirTraficMonitoring.Monitor
     {
         private readonly ILog _console;
 
-        public ConsoleMonitor(ILog console, IAirspace airspace)
+        public ConsoleMonitor(ILog console, IAirspace airspace, ISeparation separation)
         {
             _console = console;
+            airspace.FlightAddedEvent += HandleFlightAddedEvent;
+            separation.SeparationWarningEvent += HandleSeparationWarningEvent;
+        }
 
-            // TO DO:
-            // LISTEN FOR NEW FLIGHTS IN AIRSPACE (EVENT) - AIRSPACE
-            // LISTEN FOR NEW SEPARATION CONCERN IN AIRSPACE (EVENT) - SEPARATION
+        #region FlightSection
+        private void HandleFlightAddedEvent(object sender, FlightAddedEventArg args)
+        {
+            ShowAllFlightsInAirspace(args.Tracks);
         }
 
         public void ShowAllFlightsInAirspace(IList<ITrack> tracks)
@@ -36,6 +40,13 @@ namespace AirTraficMonitoring.Monitor
                 }
             }
         }
+        #endregion
+
+        #region SeparationSection
+        private void HandleSeparationWarningEvent(object sender, SeparationWarningEventArg args)
+        {
+            ShowSeparationCondition(args.SeparationList);
+        }
 
         public void ShowSeparationCondition(List<ITrack> tracks)
         {
@@ -50,5 +61,6 @@ namespace AirTraficMonitoring.Monitor
                 _console.LogError(e.Message);
             }   
         }
+        #endregion
     }
 }
