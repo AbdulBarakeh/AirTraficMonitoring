@@ -13,7 +13,6 @@ namespace AirTraficMonitoring.Application
     {
         static void Main(string[] args)
         {
-            //COMMENT TO TEST PUSH EVENT ON JENKINS
             var airspace = new Airspace(new FlightValidator(), 80000, 80000, 500, 20000);
             var decoder = new FlightDecoder(airspace, TransponderReceiverFactory.CreateTransponderDataReceiver());
 
