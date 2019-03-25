@@ -5,6 +5,12 @@ namespace AirTraficMonitoring.Validator
 {
     public class FlightValidator : IValidator
     {
+    
+        public FlightValidator()
+        {
+            
+        }
+
         public bool Validate(IAirspace airspace, ITrack track)
         {
             var height = new

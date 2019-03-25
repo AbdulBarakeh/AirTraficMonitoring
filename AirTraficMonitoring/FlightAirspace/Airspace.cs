@@ -9,7 +9,7 @@ namespace AirTraficMonitoring.FlightAirspace
 {
     public class Airspace  : IAirspace
     {
-        public List<ITrack> ListOfFlights;
+        public List<ITrack> ListOfFlights { get; set; }
         public event EventHandler<FlightAddedEventArg> FlightAddedEvent;
         private const string DateFormat = "yyyyMMddHHmmssfff";
         private readonly CultureInfo _cultureInfo;
