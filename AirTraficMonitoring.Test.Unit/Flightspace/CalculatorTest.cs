@@ -23,13 +23,13 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
         private FlightAirspace.Airspace _uut;
 
         private FlightValidator validator = new FlightValidator();
-        // private FlightTrack _testTrack;
+
 
         [SetUp]
 
         public void Setup()
         {
-            _uut = new FlightAirspace.Airspace(validator,80000,500,500,20000);
+            _uut = new FlightAirspace.Airspace(validator,80000,80000,500,20000);
 
         }
 
@@ -60,8 +60,8 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
 
             _uut.Add(_testTrack2);
             _uut.Add(_testTrack3);
-            //_uut.Calculate(_testTrack2);
-            Assert.That(_testTrack2.Velocity, Is.Not.EqualTo(0.0));
+           
+            Assert.That(_testTrack3.Velocity, Is.Not.EqualTo(0.0));
 
         }
 
@@ -72,7 +72,6 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             var _testTrack6 = new FlightTrack("MSK024", "56899", "72520", "6666", "20190322085220678");
             _uut.Add(_testTrack5);
             _uut.Add(_testTrack6);
-            //_uut.Calculate(_testTrack5);
             Assert.That(_testTrack6.CompassCourse, Is.Not.EqualTo(0.0));
         }
 
