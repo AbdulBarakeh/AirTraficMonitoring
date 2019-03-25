@@ -12,7 +12,7 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
     [TestFixture]
     public class AirspaceUnit
     {
-        private Airspace _uut;
+        private FlightAirspace.Airspace _uut;
         private IValidator _flightValidator;
         private bool _eventRaised;
 
@@ -21,7 +21,7 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
         {
             _flightValidator = Substitute.For<IValidator>();
 
-            _uut = new Airspace(_flightValidator, 80000, 80000, 500, 20000);
+            _uut = new FlightAirspace.Airspace(_flightValidator, 80000, 80000, 500, 20000);
 
             _uut.FlightAddedEvent += (sender, args) => _eventRaised = true;
         }

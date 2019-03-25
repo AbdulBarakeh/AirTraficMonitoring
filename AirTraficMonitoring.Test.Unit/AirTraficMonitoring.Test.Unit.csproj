@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Flightspace\AirspaceUnit.cs" />
     <Compile Include="Decoder\Decoding.cs" />
+    <Compile Include="Flightspace\CalculatorTest.cs" />
     <Compile Include="Logger\ConsoleLogError.cs" />
     <Compile Include="Logger\ConsoleLogInformation.cs" />
     <Compile Include="Logger\ConsoleLogWarning.cs" />
