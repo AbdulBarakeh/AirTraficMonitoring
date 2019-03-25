@@ -23,10 +23,5 @@ namespace AirTraficMonitoring.Track
         public string TimeStamp { get; set; }
         public double Velocity { get; set; }
         public double CompassCourse { get; set; }
-
-        public static implicit operator List<object>(FlightTrack v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

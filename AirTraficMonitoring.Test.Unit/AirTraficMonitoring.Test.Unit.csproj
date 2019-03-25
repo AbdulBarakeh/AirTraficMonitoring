@@ -89,7 +89,6 @@
     <Compile Include="Monitor\TrackFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Separation\Separator.cs" />
-    <Compile Include="Separation\TestSeparationSource.cs" />
     <Compile Include="Validation\FlightValidation.cs" />
   </ItemGroup>
   <ItemGroup>
