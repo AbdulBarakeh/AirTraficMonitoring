@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using NSubstitute;
 using NUnit.Framework;
 using AirTraficMonitoring.FlightAirspace;
+using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Separation;
 using AirTraficMonitoring.Test.Unit.Monitor;
 using AirTraficMonitoring.Track;
@@ -17,14 +18,16 @@ namespace AirTraficMonitoring.Test.Unit.Separation
 
         private FlightAddedEventArg _receivedEventArg;
         private SeparationWarningEventArg _separationWarningEventArg;
+        private ILog _fileLog;
         private IAirspace _airspace;
         private List<ITrack> myList = new List<ITrack>();
 
         [SetUp]
         public void Setup()
         {
+            _fileLog = Substitute.For<ILog>();
             _airspace = Substitute.For<IAirspace>();
-            _uut = new FlightSeparation(_airspace);
+            _uut = new FlightSeparation(_fileLog, _airspace);
             _receivedEventArg = new FlightAddedEventArg();
             _separationWarningEventArg = new SeparationWarningEventArg();
         }

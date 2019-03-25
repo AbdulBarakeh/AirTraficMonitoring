@@ -16,12 +16,14 @@ namespace AirTraficMonitoring.Application
             var airspace = new Airspace(new FlightValidator(), 80000, 80000, 500, 20000);
             var decoder = new FlightDecoder(airspace, TransponderReceiverFactory.CreateTransponderDataReceiver());
 
-            var separation = new FlightSeparation(airspace);
+
+            var log = new FileLog();
+            var separation = new FlightSeparation(log, airspace);
             var monitor = new ConsoleMonitor(new ConsoleLog(), airspace, separation);
 
             while (true)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
         }
     }
