@@ -1,81 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
-using AirTraficMonitoring.Track;
+using System.Linq;
 using AirTraficMonitoring.FlightAirspace;
+using AirTraficMonitoring.Logger;
+using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.Separation
 {
     public class FlightSeparation : ISeparation
     {
-        private bool _onEvent;
-        public event EventHandler<SeparationWarningEventArg> SeparationWarningEvent;
-        public List<ITrack> SeparationList = new List<ITrack>();
-        public FlightSeparation(IAirspace airspace)
-        {
-            airspace.FlightAddedEvent += HandleFlightAddedEvent;
-        }
+        private readonly ILog _file;
 
-        protected virtual void OnSeparationAddedEvent(SeparationWarningEventArg arg)
+        public event EventHandler<SeparationWarningEventArg> SeparationWarningEvent;
+
+        public FlightSeparation(ILog file, IAirspace airspace)
         {
-            SeparationWarningEvent?.Invoke(this, arg);
+            _file = file;
+
+            airspace.FlightAddedEvent += HandleFlightAddedEvent;
         }
 
         private void HandleFlightAddedEvent(object sender, FlightAddedEventArg e)
         {
-            foreach (var track in e.Tracks)
+            CheckForSeparation(e.Tracks);
+        }
+
+        protected virtual void OnSeparationWarningEvent(SeparationWarningEventArg args)
+        {
+            SeparationWarningEvent?.Invoke(this, args);
+        }
+
+        public void CheckForSeparation(List<ITrack> tracks)
+        {
+            //Kig eventuelt på LINQ ZIP funktionen
+            foreach (var track in tracks)
             {
-                foreach (var otherTrack in e.Tracks)
+                foreach (var otherTrack in tracks)
                 {
-                    if (track.Tag != otherTrack.Tag)
+                    if (track.Tag == otherTrack.Tag) continue;
+
+                    var delta = new
                     {
-                        var deltaXPos = track.XPosition - otherTrack.XPosition;
-                        var deltaYPos = track.YPosition - otherTrack.YPosition;
-                        var deltaAlt = Math.Abs(track.Altitude - otherTrack.Altitude);
+                        X = track.XPosition - otherTrack.XPosition,
+                        Y = track.YPosition - otherTrack.YPosition,
+                    };
 
-                        //var distance = Math.Sqrt(Math.Pow(deltaXPos, 2) + Math.Pow(deltaYPos, 2));
-                        while((Math.Sqrt(Math.Pow(deltaXPos, 2) + Math.Pow(deltaYPos, 2)) < 5000
-                            && deltaAlt < 300))
-                        {
-                            Console.WriteLine("Plains too close");
-                            if (!_onEvent)
-                            {
-                                SeparationList.Add(track);
-                                SeparationList.Add(otherTrack);
+                    var distance = new
+                    {
+                        Horizontal = Math.Sqrt(Math.Pow(delta.X, 2) + Math.Pow(delta.Y, 2)),
+                        Vertical = Math.Abs(track.Altitude - otherTrack.Altitude)
+                    };
 
-                                OnSeparationAddedEvent(new SeparationWarningEventArg {SeparationList = SeparationList});
-                                _onEvent = true;
-                            }
-                        } 
+                    if (distance.Horizontal < 5000 && distance.Vertical < 300)
+                    {
+                        var flightsInSeparation = new List<ITrack>(){track, otherTrack};
+            
+                        _file.LogWarning($"SEPARATION: [{flightsInSeparation[0].Tag}, {flightsInSeparation[1].Tag}] DISTANCE: [H:V] [{distance.Horizontal}:{distance.Vertical}]");
+
+                        OnSeparationWarningEvent(new SeparationWarningEventArg(){SeparationList = flightsInSeparation});
                     }
                 }
             }
         }
-
-        private void CalculateDistance()
-        {
-
-        }
-
-
-        //public void Update(ITrack track)
-        //{
-        //    Console.WriteLine("test");
-
-        //    foreach (var newTrack in _airspace.ListOfFlights)
-        //    {
-        //        foreach (var otherTrack in _airspace.ListOfFlights)
-        //        {
-        //            //_airspace.ListOfFlights.FindAll(x => x.Tag != newTrack.Tag);
-        //            if (newTrack.Tag != otherTrack.Tag)
-        //            {
-        //                if ((newTrack.XPosition - otherTrack.XPosition) < 300)
-        //                {
-        //                }
-
-        //                //raise event
-        //            }
-        //        }
-        //    }
-        //}
     }
 }

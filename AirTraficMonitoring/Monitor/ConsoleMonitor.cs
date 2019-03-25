@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Separation;
@@ -26,6 +27,8 @@ namespace AirTraficMonitoring.Monitor
         public void ShowAllFlightsInAirspace(IList<ITrack> tracks)
         {
             if (tracks.Count == 0) return;
+
+            //Console.Clear(); Uncomment when running program to clear console
 
             foreach (var track in tracks)
             {
