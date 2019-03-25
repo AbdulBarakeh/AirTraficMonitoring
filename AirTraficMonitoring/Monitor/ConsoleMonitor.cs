@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Logger;
 using AirTraficMonitoring.Separation;

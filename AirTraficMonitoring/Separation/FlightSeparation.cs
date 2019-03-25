@@ -30,9 +30,12 @@ namespace AirTraficMonitoring.Separation
             SeparationWarningEvent?.Invoke(this, args);
         }
 
+        #region TO DO
+        // Separation tilføjes til fil to gange pr. separation fordi listen løbes igennem for alle fly og checkes med samme liste
+        // Log kun til filen en gang pr. seperation
+        #endregion
         public void CheckForSeparation(List<ITrack> tracks)
         {
-            //Kig eventuelt på LINQ ZIP funktionen
             foreach (var track in tracks)
             {
                 foreach (var otherTrack in tracks)
