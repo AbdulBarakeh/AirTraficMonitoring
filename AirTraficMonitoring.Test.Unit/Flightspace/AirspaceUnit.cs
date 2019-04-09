@@ -16,14 +16,28 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
         private IValidator _flightValidator;
         private bool _eventRaised;
 
+        private FlightAddedEventArg _eventToTest;
+        private object _eventSource;
+        
+
         [SetUp]
         public void Setup()
         {
+            _eventRaised = false;
+            _eventToTest = null;
+            _eventSource = null;
+
             _flightValidator = Substitute.For<IValidator>();
 
             _uut = new FlightAirspace.Airspace(_flightValidator, 80000, 80000, 500, 20000);
 
-            _uut.FlightAddedEvent += (sender, args) => _eventRaised = true;
+            //_uut.FlightAddedEvent += (sender, args) => _eventRaised = true;
+            _uut.FlightAddedEvent += (sender, args) => 
+            {
+                _eventRaised = true;
+                _eventToTest = args;
+                _eventSource = sender;
+            }; 
         }
 
         [Test]
@@ -44,8 +58,22 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
 
             _uut.Add(flightTrack);
 
-            Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(1));
+            Assert.That(_eventToTest.Tracks.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(1));
         }
+
+        //>>>>Original Test er udkommenteret i worstcase scenario<<<<
+
+        //[Test]
+        //public void AddFlight_FlightIsWithinAirspace_AddedToList()
+        //{
+        //    var flightTrack = TrackFactory.CreateTestTrack();
+        //    _flightValidator.Validate(_uut, flightTrack).Returns(true);
+
+        //    _uut.Add(flightTrack);
+
+        //    //Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(1));
+
+        //}
 
         [Test]
         public void AddFlight_FlightIsNotWithinAirspace_NotAddedToList()
@@ -55,8 +83,19 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
 
             _uut.Add(flightTrack);
 
-            Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(0));
+            Assert.That(_eventToTest.Tracks.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(0));
         }
+
+        //[Test]
+        //public void AddFlight_FlightIsNotWithinAirspace_NotAddedToList()
+        //{
+        //    var flightTrack = TrackFactory.CreateTestTrack();
+        //    _flightValidator.Validate(_uut, flightTrack).Returns(false);
+
+        //    _uut.Add(flightTrack);
+
+        //    Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(0));
+        //}
 
         [Test]
         public void AddFlight_FlightWithSameTagIsAlreadyWithinList_FlightIsReplaced()
@@ -68,8 +107,21 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
 
             _uut.Add(flightTrack);
 
-            Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(1));
+            Assert.That(_eventToTest.Tracks.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(1));
         }
+
+        //[Test]
+        //public void AddFlight_FlightWithSameTagIsAlreadyWithinList_FlightIsReplaced()
+        //{
+        //    _uut.ListOfFlights.Add(TrackFactory.CreateTestTrack());
+
+        //    var flightTrack = TrackFactory.CreateTestTrack();
+        //    _flightValidator.Validate(_uut, flightTrack).Returns(true);
+
+        //    _uut.Add(flightTrack);
+
+        //    Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(1));
+        //}
 
         [Test]
         public void AddFlight_FlightAddedEvent_EventIsRaised()
@@ -92,7 +144,20 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
 
             _uut.Add(flightTrack);
 
-            Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(0));
+            Assert.That(_eventToTest.Tracks.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(0));
         }
+
+        //[Test]
+        //public void AddFlight_FlightFromListIsNoLongerWithinAirspace_RemoveFlight()
+        //{
+        //    _uut.ListOfFlights.Add(TrackFactory.CreateTestTrack());
+
+        //    var flightTrack = TrackFactory.CreateTestTrack();
+        //    _flightValidator.Validate(_uut, flightTrack).Returns(false);
+
+        //    _uut.Add(flightTrack);
+
+        //    Assert.That(_uut.ListOfFlights.Count(t => t.Tag == flightTrack.Tag), Is.EqualTo(0));
+        //}
     }
 }

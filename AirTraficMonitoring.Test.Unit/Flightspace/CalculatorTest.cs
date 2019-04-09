@@ -24,13 +24,19 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
 
         private FlightValidator validator = new FlightValidator();
 
+        //private FlightAddedEventArg eventTotest;
+
 
         [SetUp]
 
         public void Setup()
         {
+            //eventTotest = null;
             _uut = new FlightAirspace.Airspace(validator,80000,80000,500,20000);
-
+            //_uut.FlightAddedEvent += (o, args) =>
+            //{
+            //    eventTotest = args;
+            //};
         }
 
         [Test]

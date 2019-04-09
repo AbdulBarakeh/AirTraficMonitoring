@@ -32,12 +32,17 @@ namespace AirTraficMonitoring.FlightAirspace
             FlightAddedEvent?.Invoke(this, e);
         }
 
+
         public void Add(ITrack track)
         {
+            //FlightAddedEventArg flightAddedEvent = new FlightAddedEventArg();
             if (_flightValidator.Validate(this, track))
             {
                 ListOfFlights.Add(Calculate(track));
-                OnFlightAddedEvent(new FlightAddedEventArg {Tracks = ListOfFlights});
+                OnFlightAddedEvent(new FlightAddedEventArg { Tracks = ListOfFlights });
+                //flightAddedEvent.Tracks.Add(Calculate(track));
+                //OnFlightAddedEvent( flightAddedEvent.Tracks);
+
             }
             else
             {
@@ -72,7 +77,7 @@ namespace AirTraficMonitoring.FlightAirspace
             var flight = new
             {
                 speed = distance / time,
-                course = (Math.Atan2(delta.Y, delta.X) * (180 / Math.PI)) - 90
+                course = Math.Abs((Math.Atan2(delta.Y, delta.X) * (180 / Math.PI)) - 90)
             };
 
             track.Velocity = flight.speed;
