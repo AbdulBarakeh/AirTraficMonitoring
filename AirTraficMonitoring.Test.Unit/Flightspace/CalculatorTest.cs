@@ -61,13 +61,13 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
         public void Adding2Flights_Testing_calculate_SpeedUpdate_DifferentForZero()
         {
 
-            var _testTrack2 = new FlightTrack("MSK024", "25684", "68556", "6666", "20190322085020678");
+            var _testTrack2 = new FlightTrack("MSK024", "25684", "68556", "6666", "20190322080020678");
             var _testTrack3 = new FlightTrack("MSK024", "50000", "75000", "6666", "20190322085220678");
 
             _uut.Add(_testTrack2);
             _uut.Add(_testTrack3);
            
-            Assert.That(_testTrack3.Velocity, Is.Not.EqualTo(0.0));
+            Assert.That(_testTrack3.Velocity, Is.EqualTo(209.628));
 
         }
 
