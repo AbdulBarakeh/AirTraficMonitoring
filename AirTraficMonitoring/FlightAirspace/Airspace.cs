@@ -7,6 +7,8 @@ using System.Globalization;
 
 namespace AirTraficMonitoring.FlightAirspace
 {
+    public delegate void addLimitEventHandler(object source, FlightAddedEventArg e);
+
     public class Airspace  : IAirspace
     {
         public List<ITrack> ListOfFlights { get; set; }
@@ -32,7 +34,7 @@ namespace AirTraficMonitoring.FlightAirspace
             FlightAddedEvent?.Invoke(this, e);
         }
 
-
+       
         public void Add(ITrack track)
         {
             //FlightAddedEventArg flightAddedEvent = new FlightAddedEventArg();
@@ -46,10 +48,14 @@ namespace AirTraficMonitoring.FlightAirspace
             }
             else
             {
-                if (ListOfFlights.FirstOrDefault(t => t.Tag == track.Tag) == null)
-                    return;
-
-                ListOfFlights.RemoveAll(t => t.Tag == track.Tag);
+                switch (ListOfFlights.FirstOrDefault(t => t.Tag == track.Tag))
+                {
+                    case null:
+                        return;
+                    default:
+                        ListOfFlights.RemoveAll(t => t.Tag == track.Tag);
+                        break;
+                }
             }
         }
         
