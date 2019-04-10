@@ -66,8 +66,9 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
 
             _uut.Add(_testTrack2);
             _uut.Add(_testTrack3);
+            
            
-            Assert.That(_testTrack3.Velocity, Is.EqualTo(209.628));
+            Assert.That(_testTrack3.Velocity, Is.EqualTo(Math.Round(8.0626208332560637821,2)));
 
         }
 
@@ -78,7 +79,7 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             var _testTrack6 = new FlightTrack("MSK024", "56899", "72520", "6666", "20190322085220678");
             _uut.Add(_testTrack5);
             _uut.Add(_testTrack6);
-            Assert.That(_testTrack6.CompassCourse, Is.Not.EqualTo(0.0));
+            Assert.That(_testTrack6.CompassCourse, Is.EqualTo(Math.Round(82.762733899493966,3)));
         }
 
     }

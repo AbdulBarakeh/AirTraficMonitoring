@@ -74,10 +74,10 @@ namespace AirTraficMonitoring.FlightAirspace
             var timestamp = new
             {
                 Old = DateTime.ParseExact(flightTrack.TimeStamp, DateFormat, _cultureInfo),
-                New = DateTime.ParseExact(flightTrack.TimeStamp, DateFormat, _cultureInfo)
+                New = DateTime.ParseExact(track.TimeStamp, DateFormat, _cultureInfo)
             };
 
-            var time = (timestamp.New - timestamp.Old).TotalSeconds;     
+            var time = (timestamp.New - timestamp.Old).TotalSeconds;   
             var distance = Math.Sqrt(Math.Pow(delta.X, 2) + Math.Pow(delta.Y, 2));
 
             var flight = new
@@ -86,8 +86,8 @@ namespace AirTraficMonitoring.FlightAirspace
                 course = Math.Abs((Math.Atan2(delta.Y, delta.X) * (180 / Math.PI)) - 90)
             };
 
-            track.Velocity = flight.speed;
-            track.CompassCourse = flight.course;
+            track.Velocity = Math.Round(flight.speed,2);
+            track.CompassCourse = Math.Round(flight.course,3);
 
             ListOfFlights.RemoveAll(t => t.Tag == track.Tag);
 
