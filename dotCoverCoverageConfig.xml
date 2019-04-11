@@ -12,15 +12,15 @@
   -->
   <Filters>
     <IncludeFilters>
+	      <FilterEntry>
+        <ModuleMask>serilog</ModuleMask>
+        <ClassMask>*</ClassMask>
+        <FunctionMask>*</FunctionMask>
+      </FilterEntry>
     </IncludeFilters>
     <ExcludeFilters>
       <FilterEntry>
         <ModuleMask>nunit.framework</ModuleMask>
-        <ClassMask>*</ClassMask>
-        <FunctionMask>*</FunctionMask>
-      </FilterEntry>
-      <FilterEntry>
-        <ModuleMask>serilog</ModuleMask>
         <ClassMask>*</ClassMask>
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
