@@ -12,6 +12,7 @@
   -->
   <Filters>
     <IncludeFilters>
+
     </IncludeFilters>
     <ExcludeFilters>
       <FilterEntry>
@@ -19,8 +20,8 @@
         <ClassMask>*</ClassMask>
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
-      <FilterEntry>
-        <ModuleMask>serilog</ModuleMask>
+	  	 <FilterEntry>
+        <ModuleMask>Serilog</ModuleMask>
         <ClassMask>*</ClassMask>
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
