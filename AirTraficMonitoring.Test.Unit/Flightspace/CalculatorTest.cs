@@ -81,6 +81,144 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             _uut.Add(_testTrack6);
             Assert.That(_testTrack6.CompassCourse, Is.EqualTo(Math.Round(82.762733899493966,3)));
         }
+        //<SpeedTest>
+        [Test]
+
+        public void Adding2Flights_TestingWith_XEqualZero_Track1_Speed()
+        {
+            var _testTrack7 = new FlightTrack("GIG025", "0","53000","6666","20190411131320654");
+            var _testTrack8 = new FlightTrack("GIG025", "10000", "53000", "6666", "20190411131620654");
+            _uut.Add(_testTrack7);
+            _uut.Add(_testTrack8);
+            Assert.That(_testTrack8.Velocity,Is.EqualTo(Math.Round(55.556, 2)));
+        }
+
+        [Test]
+        public void Adding2Flights_TestingWith_XEqualZero_Track2_Speed()
+        {
+            var _testTrack7 = new FlightTrack("GIG025", "10000", "53000", "6666", "20190411131320654");
+            var _testTrack8 = new FlightTrack("GIG025", "0", "53000", "6666", "20190411131620654");
+            _uut.Add(_testTrack7);
+            _uut.Add(_testTrack8);
+            Assert.That(_testTrack8.Velocity, Is.EqualTo(Math.Round(55.556, 2)));
+        }
+
+        [Test]
+
+        public void Adding2Flights_TestingWith_YEqualZero_Track1_Speed()
+        {
+            var _testTrack7 = new FlightTrack("GIG025", "26000", "0", "6666", "20190411131320654");
+            var _testTrack8 = new FlightTrack("GIG025", "27000", "53000", "6666", "20190411131620654");
+            _uut.Add(_testTrack7);
+            _uut.Add(_testTrack8);
+            Assert.That(_testTrack8.Velocity, Is.EqualTo(Math.Round(294.497, 2)));
+        }
+
+        [Test]
+        public void Adding2Flights_TestingWith_YEqualZero_Track2_Speed()
+        {
+            var _testTrack7 = new FlightTrack("GIG025", "26000", "53000", "6666", "20190411131320654");
+            var _testTrack8 = new FlightTrack("GIG025", "27000", "0", "6666", "20190411131620654");
+            _uut.Add(_testTrack7);
+            _uut.Add(_testTrack8);
+            Assert.That(_testTrack8.Velocity, Is.EqualTo(Math.Round(294.497, 2)));
+        }
+
+        [Test]
+        public void Adding2Flights_TestingWith_ZEqualZero_Track1_Speed()
+        {
+            var _testTrack9 = new FlightTrack("MMB759", "78842","32654", "0", "20190411133536356");
+            var _testTrack10 = new FlightTrack("MMB759", "78842", "32654", "7562", "20190411133936356");
+            _uut.Add(_testTrack9);
+            _uut.Add(_testTrack10);
+            Assert.That(_testTrack10.Velocity,Is.EqualTo(0));
+            //TestTrack 9 is not valid thus is not inserted into list. Which means there is no possibility of calulating speed
+        }
+
+        [Test]
+        public void Adding2Flights_TestingWith_ZEqualZero_Track2_Speed()
+        {
+            var _testTrack9 = new FlightTrack("MMB759", "78842", "32654", "7562", "20190411133536356");
+            var _testTrack10 = new FlightTrack("MMB759", "78842", "32654", "0", "20190411133936356");
+            _uut.Add(_testTrack9);
+            _uut.Add(_testTrack10);
+            Assert.That(_testTrack10.Velocity, Is.EqualTo(0));
+            //TestTrack 10 is not valid thus is not inserted into list. Which means there is no possibility of calulating speed
+        }
+        //</SpeedTest>
+
+
+
+
+
+
+        
+        //<CompassCourseTest>
+        [Test]
+
+        public void Adding2Flights_TestingWith_XEqualZero_Track1_Compass()
+        {
+            var _testTrack7 = new FlightTrack("GIG025", "0", "53000", "6666", "20190411131320654");
+            var _testTrack8 = new FlightTrack("GIG025", "10000", "53000", "6666", "20190411131620654");
+            _uut.Add(_testTrack7);
+            _uut.Add(_testTrack8);
+            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(270.000, 2)));
+        }
+
+        [Test]
+        public void Adding2Flights_TestingWith_XEqualZero_Track2_Compass()
+        {
+            var _testTrack7 = new FlightTrack("GIG025", "10000", "53000", "6666", "20190411131320654");
+            var _testTrack8 = new FlightTrack("GIG025", "0", "53000", "6666", "20190411131620654");
+            _uut.Add(_testTrack7);
+            _uut.Add(_testTrack8);
+            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(55.556, 2)));
+        }
+
+        [Test]
+
+        public void Adding2Flights_TestingWith_YEqualZero_Track1_Compass()
+        {
+            var _testTrack7 = new FlightTrack("GIG025", "26000", "0", "6666", "20190411131320654");
+            var _testTrack8 = new FlightTrack("GIG025", "27000", "53000", "6666", "20190411131620654");
+            _uut.Add(_testTrack7);
+            _uut.Add(_testTrack8);
+            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(294.497, 2)));
+        }
+
+        [Test]
+        public void Adding2Flights_TestingWith_YEqualZero_Track2_Compass()
+        {
+            var _testTrack7 = new FlightTrack("GIG025", "26000", "53000", "6666", "20190411131320654");
+            var _testTrack8 = new FlightTrack("GIG025", "27000", "0", "6666", "20190411131620654");
+            _uut.Add(_testTrack7);
+            _uut.Add(_testTrack8);
+            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(294.497, 2)));
+        }
+
+        [Test]
+        public void Adding2Flights_TestingWith_ZEqualZero_Track1_Compass()
+        {
+            var _testTrack9 = new FlightTrack("MMB759", "78842", "32654", "0", "20190411133536356");
+            var _testTrack10 = new FlightTrack("MMB759", "78842", "32654", "7562", "20190411133936356");
+            _uut.Add(_testTrack9);
+            _uut.Add(_testTrack10);
+            Assert.That(_testTrack10.CompassCourse, Is.EqualTo(0));
+            //TestTrack 9 is not valid thus is not inserted into list. Which means there is no possibility of calulating speed
+        }
+
+        [Test]
+        public void Adding2Flights_TestingWith_ZEqualZero_Track2_Compass()
+        {
+            var _testTrack9 = new FlightTrack("MMB759", "78842", "32654", "7562", "20190411133536356");
+            var _testTrack10 = new FlightTrack("MMB759", "78842", "32654", "0", "20190411133936356");
+            _uut.Add(_testTrack9);
+            _uut.Add(_testTrack10);
+            Assert.That(_testTrack10.CompassCourse, Is.EqualTo(0));
+            //TestTrack 10 is not valid thus is not inserted into list. Which means there is no possibility of calulating speed
+        }
+        //</CompassCourseTest>
+
 
     }
 }

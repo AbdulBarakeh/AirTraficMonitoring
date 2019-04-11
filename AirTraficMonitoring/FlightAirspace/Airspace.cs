@@ -4,6 +4,7 @@ using System.Linq;
 using AirTraficMonitoring.Track;
 using AirTraficMonitoring.Validator;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace AirTraficMonitoring.FlightAirspace
 {
@@ -80,10 +81,20 @@ namespace AirTraficMonitoring.FlightAirspace
             var time = (timestamp.New - timestamp.Old).TotalSeconds;   
             var distance = Math.Sqrt(Math.Pow(delta.X, 2) + Math.Pow(delta.Y, 2));
 
+            double InitialDegree = ((Math.Atan2(delta.Y, delta.X) * (180 / Math.PI)) - 90);
+
+            if (InitialDegree < 0)
+            {
+                InitialDegree += 360;
+            }
+
+
             var flight = new
             {
                 speed = distance / time,
-                course = Math.Abs((Math.Atan2(delta.Y, delta.X) * (180 / Math.PI)) - 90)
+                //course = Math.Abs((Math.Atan2(delta.Y, delta.X) * (180 / Math.PI)) - 90)
+                course = InitialDegree
+                
             };
 
             track.Velocity = Math.Round(flight.speed,2);
