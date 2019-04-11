@@ -88,10 +88,25 @@ namespace AirTraficMonitoring.FlightAirspace
                 InitialDegree += 360;
             }
 
+            double InitialSpeed;
+
+            if (time == 0)
+            {
+                throw new DivideByZeroException("Time can't be zero. You can't divide by zero");
+            }
+            else if(time < 0)
+            {
+                throw new Exception("You can't go back in time");
+            }
+            else
+            {
+                InitialSpeed = distance / time;
+            }
+            
 
             var flight = new
             {
-                speed = distance / time,
+                speed = InitialSpeed,
                 
                 course = InitialDegree
                 

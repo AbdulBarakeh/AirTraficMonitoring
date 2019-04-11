@@ -4,6 +4,7 @@ using AirTraficMonitoring.FlightAirspace;
 using AirTraficMonitoring.Test.Unit.Monitor;
 using AirTraficMonitoring.Validator;
 using NSubstitute;
+using AirTraficMonitoring.Track;
 
 namespace AirTraficMonitoring.Test.Unit.Flightspace
 {
@@ -111,7 +112,9 @@ namespace AirTraficMonitoring.Test.Unit.Flightspace
         [Test]
         public void AddFlight_FlightWithSameTagIsAlreadyWithinList_FlightIsReplaced()
         {
-            _uut.ListOfFlights.Add(TrackFactory.CreateTestTrack());
+            var _testTrack1 = new FlightTrack("ABC123", "25684", "68556", "6666", "20190320191050000");
+            //Have to manually create track to avoid exception being thrown
+            _uut.ListOfFlights.Add(_testTrack1);
 
             var flightTrack = TrackFactory.CreateTestTrack();
             _flightValidator.Validate(_uut, flightTrack).Returns(true);
