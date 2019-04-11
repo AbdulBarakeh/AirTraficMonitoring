@@ -13,7 +13,7 @@
   <Filters>
     <IncludeFilters>
 	      <FilterEntry>
-        <ModuleMask>serilog</ModuleMask>
+        <ModuleMask>Serilog</ModuleMask>
         <ClassMask>*</ClassMask>
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
