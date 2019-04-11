@@ -92,7 +92,7 @@ namespace AirTraficMonitoring.FlightAirspace
             var flight = new
             {
                 speed = distance / time,
-                //course = Math.Abs((Math.Atan2(delta.Y, delta.X) * (180 / Math.PI)) - 90)
+                
                 course = InitialDegree
                 
             };

@@ -79,8 +79,10 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             var _testTrack6 = new FlightTrack("MSK024", "56899", "72520", "6666", "20190322085220678");
             _uut.Add(_testTrack5);
             _uut.Add(_testTrack6);
-            Assert.That(_testTrack6.CompassCourse, Is.EqualTo(Math.Round(82.762733899493966,3)));
+            Assert.That(_testTrack6.CompassCourse, Is.EqualTo(Math.Round(277.23726610051, 3)));
         }
+
+
         //<SpeedTest>
         [Test]
 
@@ -148,10 +150,6 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
         //</SpeedTest>
 
 
-
-
-
-
         
         //<CompassCourseTest>
         [Test]
@@ -162,7 +160,7 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             var _testTrack8 = new FlightTrack("GIG025", "10000", "53000", "6666", "20190411131620654");
             _uut.Add(_testTrack7);
             _uut.Add(_testTrack8);
-            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(270.000, 2)));
+            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(270.002, 2)));
         }
 
         [Test]
@@ -172,7 +170,7 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             var _testTrack8 = new FlightTrack("GIG025", "0", "53000", "6666", "20190411131620654");
             _uut.Add(_testTrack7);
             _uut.Add(_testTrack8);
-            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(55.556, 2)));
+            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(89.99893897, 2)));
         }
 
         [Test]
@@ -183,7 +181,7 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             var _testTrack8 = new FlightTrack("GIG025", "27000", "53000", "6666", "20190411131620654");
             _uut.Add(_testTrack7);
             _uut.Add(_testTrack8);
-            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(294.497, 2)));
+            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(358.91907581334, 3)));
         }
 
         [Test]
@@ -193,7 +191,7 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             var _testTrack8 = new FlightTrack("GIG025", "27000", "0", "6666", "20190411131620654");
             _uut.Add(_testTrack7);
             _uut.Add(_testTrack8);
-            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(294.497, 2)));
+            Assert.That(_testTrack8.CompassCourse, Is.EqualTo(Math.Round(181.08092418666, 3)));
         }
 
         [Test]
@@ -204,7 +202,7 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             _uut.Add(_testTrack9);
             _uut.Add(_testTrack10);
             Assert.That(_testTrack10.CompassCourse, Is.EqualTo(0));
-            //TestTrack 9 is not valid thus is not inserted into list. Which means there is no possibility of calulating speed
+            //TestTrack 9 is not valid thus is not inserted into list. Which means there is no possibility of calulating course
         }
 
         [Test]
@@ -215,9 +213,10 @@ namespace AirTraficMonitoring.Test.Unit.Airspace
             _uut.Add(_testTrack9);
             _uut.Add(_testTrack10);
             Assert.That(_testTrack10.CompassCourse, Is.EqualTo(0));
-            //TestTrack 10 is not valid thus is not inserted into list. Which means there is no possibility of calulating speed
+            //TestTrack 10 is not valid thus is not inserted into list. Which means there is no possibility of calulating course
         }
         //</CompassCourseTest>
+
 
 
     }
